@@ -1,4 +1,5 @@
 import { ExternalLink, GithubIcon, Linkedin, MailIcon } from "lucide-react";
+import Link from "next/link";
 
 interface ContactData {
   title: string;
@@ -44,7 +45,7 @@ export function ContactSection() {
             const isExternal = contact.type !== "email";
 
             return (
-              <a
+              <Link
                 key={index}
                 href={contact.url}
                 target={isExternal ? "_blank" : undefined}
@@ -54,7 +55,7 @@ export function ContactSection() {
                 <IconComponent className="w-6 h-6" />
                 <span>{contact.label}</span>
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
+              </Link>
             );
           })}
         </div>
