@@ -1,6 +1,6 @@
 import { getAllBlogPosts } from "@/lib/blog";
-import { BlogCard } from "@/components/blog-card";
-import { Navigation } from "@/components/navigation";
+import { BlogCard } from "@/components/internal/blog-card";
+import { Navigation } from "@/components/internal/navigation";
 
 export const metadata = {
   title: "Blog - Harish Kumar",

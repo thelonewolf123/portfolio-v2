@@ -1,9 +1,9 @@
 import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/blog";
-import { Navigation } from "@/components/navigation";
+import { Navigation } from "@/components/internal/navigation";
 import { Calendar, User, Tag } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ReactMarkdown } from "@/components/markdown-renderer";
+import { ReactMarkdown } from "@/components/internal/markdown-renderer";
 
 interface BlogPostPageProps {
   params: Promise<{

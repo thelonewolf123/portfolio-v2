@@ -1,0 +1,183 @@
+{
+    "about": {
+        "title": "About",
+        "paragraphs": [
+            "I'm a Senior Frontend Developer with expertise in building scalable, high-performance web applications. My passion lies in crafting elegant solutions to complex problems, with a focus on user experience and technical excellence.",
+            "At Pickyourtrail, I led the redesign of our hotel booking flow, resulting in a 150% increase in conversions. This experience reinforced my belief that performance optimization and thoughtful UX design go hand-in-hand.",
+            "Beyond frontend development, I have fullstack capabilities including Node.js, database design, and cloud infrastructure. I'm committed to staying current with emerging technologies and best practices."
+        ]
+    },
+    "experience": {
+        "title": "Experience",
+        "experiences": [
+            {
+                "date": "09/2024 - Current",
+                "title": "Frontend Developer - SDE II",
+                "company": "Pickyourtrail",
+                "location": "Chennai, India",
+                "highlights": [
+                    "Directed development and delivery of major features including Static Reports and Ledger module",
+                    "Revamped hotel search and booking flow on web and mobile, resulting in 150% increase in bookings",
+                    "Shipped cross-platform capabilities for Preferred Hotels and Cirium integration"
+                ]
+            },
+            {
+                "date": "11/2023 - 11/2024",
+                "title": "Fullstack Developer (Consultant)",
+                "company": "BahiKhata Inc",
+                "location": "Noida, India",
+                "highlights": [
+                    "Enabled offline sync functionality for Bahikhata mobile app",
+                    "Implemented multi-session sync to help MSMEs organize transactions across multiple devices",
+                    "Developed SMS parsing to automatically fetch and record transactions"
+                ]
+            },
+            {
+                "date": "02/2023 - 11/2023",
+                "title": "Fullstack Developer",
+                "company": "Klenty soft. inc.",
+                "location": "Chennai, India",
+                "highlights": [
+                    "Implemented Zipkin distributed tracing to enhance performance measurement",
+                    "Created instant mail tracking feature, reducing latency from 15 minutes to five seconds",
+                    "Designed slow query tracking pipeline for infrastructure optimization"
+                ]
+            },
+            {
+                "date": "08/2022 - 02/2023",
+                "title": "Senior IDE Engineer",
+                "company": "Codedamn",
+                "location": "Bangalore, India",
+                "highlights": [
+                    "Optimized container allocation pipeline, achieving 55% reduction in operational costs",
+                    "Boosted productivity by implementing autocomplete and intellisense features",
+                    "Collaborated with instructors to develop data structure and algorithm code execution stack"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "title": "Skills",
+        "categories": [
+            {
+                "name": "Frontend",
+                "skills": [
+                    "TypeScript",
+                    "JavaScript",
+                    "React",
+                    "React Native",
+                    "Next.js",
+                    "GraphQL",
+                    "Performance Optimization"
+                ]
+            },
+            {
+                "name": "Backend & DevOps",
+                "skills": [
+                    "Node.js",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Redis",
+                    "AWS",
+                    "CI/CD",
+                    "GitHub Actions",
+                    "Cloud Infrastructure"
+                ]
+            },
+            {
+                "name": "Other",
+                "skills": [
+                    "API Integration",
+                    "Caching Solutions",
+                    "API Design",
+                    "System Architecture"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "title": "Projects",
+        "projects": [
+            {
+                "title": "Job Genie",
+                "date": "November 2025 – Present",
+                "description": "AI-powered toolkit designed to help job seekers apply smarter, not harder. Includes tools for generating personalized cover letters, email builder, and resume optimization for senior roles.",
+                "tags": [
+                    "AI",
+                    "Job Search",
+                    "Automation"
+                ],
+                "liveUrl": "https://main.d1jgytnx6kv0u.amplifyapp.com",
+                "imageUrl": "/job-genie.png"
+            },
+            {
+                "title": "Artemis",
+                "date": "October 2025 – Present",
+                "description": "Personal productivity assistant built on n8n and Telegram. Integrates task management, note-taking, reminders, and Perplexity-powered research with voice interaction and calendar sync.",
+                "tags": [
+                    "Telegram Bot",
+                    "n8n",
+                    "Productivity"
+                ],
+                "githubUrl": "https://github.com/thelonewolf123/artemis-ai",
+                "liveUrl": "https://artemis-ai-beta.vercel.app",
+                "imageUrl": "/artemis.png"
+            },
+            {
+                "title": "WatchWithMe.in",
+                "date": "April 2024 – Present",
+                "description": "Chrome extension and mobile app providing a theater-like movie-watching experience for long-distance couples. Features synchronized video playback with integrated voice and video chat.",
+                "tags": [
+                    "Chrome Extension",
+                    "React Native",
+                    "WebRTC"
+                ],
+                "stats": "3,000+ monthly active users • 12,500+ watch hours",
+                "liveUrl": "https://www.watchwithme.in",
+                "imageUrl": "/watchwithme.png"
+            },
+            {
+                "title": "Stardust.app",
+                "date": "April 2023 – Present",
+                "description": "Proof-of-concept container deployment platform built on AWS Spot Instances. Added support for disaster management and one-command infrastructure provisioning with Pulumi.",
+                "tags": [
+                    "AWS",
+                    "Containers",
+                    "Infrastructure"
+                ],
+                "githubUrl": "https://github.com/thelonewolf123/stardust.app",
+                "imageUrl": "/architecture.png"
+            }
+        ]
+    },
+    "blog": {
+        "title": "Blog",
+        "description": "I share my insights on frontend development, performance optimization, and building scalable applications.",
+        "buttonText": "Read All Articles",
+        "buttonUrl": "/blog"
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "description": "I'm always interested in hearing about interesting projects and opportunities. Feel free to reach out!",
+        "contacts": [
+            {
+                "type": "email",
+                "label": "harishkumar.vellore@gmail.com",
+                "url": "mailto:harishkumar.vellore@gmail.com",
+                "icon": "MailIcon"
+            },
+            {
+                "type": "linkedin",
+                "label": "linkedin.com/in/harishkumark025",
+                "url": "https://linkedin.com/in/harishkumark025",
+                "icon": "Linkedin"
+            },
+            {
+                "type": "github",
+                "label": "github.com/thelonewolf123",
+                "url": "https://github.com/thelonewolf123",
+                "icon": "GithubIcon"
+            }
+        ]
+    }
+}
