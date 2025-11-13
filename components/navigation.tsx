@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 interface NavigationProps {
   activeSection: string;
@@ -8,6 +9,9 @@ interface NavigationProps {
 }
 
 export function Navigation({ activeSection, isScrolling }: NavigationProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const sections = [
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
@@ -26,13 +30,21 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
       }`}
     >
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
-        <div className="text-xl font-bold">HK</div>
+        <Link
+          href="/"
+          className="text-xl font-bold hover:text-grey-100 transition-colors p-1 bg-accent hover:bg-accent/90 rounded-md active:bg-accent/50"
+        >
+          Hk
+        </Link>
         <div className="hidden md:flex items-center gap-8">
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => {
-                if (section.id === "blog") {
+                if (pathname !== "/") {
+                  // If not on home page, navigate to home page with anchor
+                  router.push(`/#${section.id}`);
+                } else if (section.id === "blog") {
                   // Special handling for blog - it can either scroll to section or go to page
                   const element = document.getElementById(section.id);
                   if (element) {
@@ -67,12 +79,17 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
             value={activeSection}
             onChange={(e) => {
               if (e.target.value && e.target.value !== "blog-page") {
-                const element = document.getElementById(e.target.value);
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
+                if (pathname !== "/") {
+                  // If not on home page, navigate to home page with anchor
+                  router.push(`/#${e.target.value}`);
+                } else {
+                  const element = document.getElementById(e.target.value);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
                 }
               } else if (e.target.value === "blog-page") {
-                window.location.href = "/blog";
+                router.push("/blog");
               }
             }}
           >

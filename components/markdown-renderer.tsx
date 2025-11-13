@@ -1,6 +1,11 @@
 "use client";
 
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import dynamic from "next/dynamic";
+
+const MarkdownPreview = dynamic(() => import("@uiw/react-markdown-preview"), {
+  ssr: false,
+  loading: () => <></>
+});
 
 interface ReactMarkdownProps {
   content: string;
