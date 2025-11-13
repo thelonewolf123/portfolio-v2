@@ -1,103 +1,367 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+
+import { ExperienceCard } from "@/components/experience-card";
+import { ProjectCard } from "@/components/project-card";
+import { SkillBadge } from "@/components/skill-badge";
+import { Navigation } from "@/components/navigation";
+import { ExternalLink, GithubIcon, Linkedin, MailIcon } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [activeSection, setActiveSection] = useState("about");
+  const [isScrolling, setIsScrolling] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolling(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="bg-background text-foreground min-h-screen">
+      {/* Navigation */}
+      <Navigation activeSection={activeSection} isScrolling={isScrolling} />
+
+      {/* Hero Section */}
+      <section className="relative md:fixed md:left-0 md:top-0 md:w-1/2 md:h-full flex items-center justify-center px-4 md:px-8 py-20 md:py-0 border-b md:border-b-0 md:border-r border-border">
+        <div className="max-w-md w-full">
+          <div className="mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-balance">
+              Harish Kumar
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-2">
+              Senior Frontend Developer
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Specialized in TypeScript, React, and AWS. I build
+              high-performance, scalable interfaces that drive measurable
+              results.
+            </p>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="grid grid-cols-2 gap-4 mb-12">
+            <div className="border border-border rounded-lg p-4 bg-card/50">
+              <div className="text-2xl font-bold text-accent">150%</div>
+              <div className="text-xs text-muted-foreground mt-1">
+                Conversion Increase
+              </div>
+            </div>
+            <div className="border border-border rounded-lg p-4 bg-card/50">
+              <div className="text-2xl font-bold text-accent">55%</div>
+              <div className="text-xs text-muted-foreground mt-1">
+                Cost Reduction
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Links */}
+          <div className="flex items-center gap-4 mb-8">
+            <a
+              href="mailto:harishkumar.vellore@gmail.com"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              title="Email"
+            >
+              <MailIcon className="w-5 h-5" />
+            </a>
+            <a
+              href="https://linkedin.com/in/harishkumark025"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              title="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://github.com/thelonewolf123"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              title="GitHub"
+            >
+              <GithubIcon className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* CTA Button */}
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:harishkumar.vellore@gmail.com"
+            className="inline-block px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Get in Touch
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Content Section */}
+      <div className="md:ml-[50%]">
+        {/* About */}
+        <section
+          id="about"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">About</h2>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                I'm a Senior Frontend Developer with expertise in building
+                scalable, high-performance web applications. My passion lies in
+                crafting elegant solutions to complex problems, with a focus on
+                user experience and technical excellence.
+              </p>
+              <p>
+                At Pickyourtrail, I led the redesign of our hotel booking flow,
+                resulting in a 150% increase in conversions. This experience
+                reinforced my belief that performance optimization and
+                thoughtful UX design go hand-in-hand.
+              </p>
+              <p>
+                Beyond frontend development, I have fullstack capabilities
+                including Node.js, database design, and cloud infrastructure.
+                I'm committed to staying current with emerging technologies and
+                best practices.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Experience */}
+        <section
+          id="experience"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32 border-t border-border"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Experience</h2>
+            <div className="space-y-8">
+              <ExperienceCard
+                date="09/2024 - Current"
+                title="Frontend Developer - SDE II"
+                company="Pickyourtrail"
+                location="Chennai, India"
+                highlights={[
+                  "Directed development and delivery of major features including Static Reports and Ledger module",
+                  "Revamped hotel search and booking flow on web and mobile, resulting in 150% increase in bookings",
+                  "Shipped cross-platform capabilities for Preferred Hotels and Cirium integration"
+                ]}
+              />
+              <ExperienceCard
+                date="11/2023 - 11/2024"
+                title="Fullstack Developer (Consultant)"
+                company="BahiKhata Inc"
+                location="Noida, India"
+                highlights={[
+                  "Enabled offline sync functionality for Bahikhata mobile app",
+                  "Implemented multi-session sync to help MSMEs organize transactions across multiple devices",
+                  "Developed SMS parsing to automatically fetch and record transactions"
+                ]}
+              />
+              <ExperienceCard
+                date="02/2023 - 11/2023"
+                title="Fullstack Developer"
+                company="Klenty soft. inc."
+                location="Chennai, India"
+                highlights={[
+                  "Implemented Zipkin distributed tracing to enhance performance measurement",
+                  "Created instant mail tracking feature, reducing latency from 15 minutes to five seconds",
+                  "Designed slow query tracking pipeline for infrastructure optimization"
+                ]}
+              />
+              <ExperienceCard
+                date="08/2022 - 02/2023"
+                title="Senior IDE Engineer"
+                company="Codedamn"
+                location="Bangalore, India"
+                highlights={[
+                  "Optimized container allocation pipeline, achieving 55% reduction in operational costs",
+                  "Boosted productivity by implementing autocomplete and intellisense features",
+                  "Collaborated with instructors to develop data structure and algorithm code execution stack"
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section
+          id="skills"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32 border-t border-border"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Skills</h2>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Frontend</h3>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "TypeScript",
+                    "JavaScript",
+                    "React",
+                    "React Native",
+                    "Next.js",
+                    "GraphQL",
+                    "Performance Optimization"
+                  ].map((skill) => (
+                    <SkillBadge key={skill} label={skill} />
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Backend & DevOps</h3>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "Node.js",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Redis",
+                    "AWS",
+                    "CI/CD",
+                    "GitHub Actions",
+                    "Cloud Infrastructure"
+                  ].map((skill) => (
+                    <SkillBadge key={skill} label={skill} />
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Other</h3>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "API Integration",
+                    "Caching Solutions",
+                    "API Design",
+                    "System Architecture"
+                  ].map((skill) => (
+                    <SkillBadge key={skill} label={skill} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section
+          id="projects"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32 border-t border-border"
+        >
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Projects</h2>
+            <div className="space-y-8">
+              <ProjectCard
+                title="Job Genie"
+                date="November 2025 – Present"
+                description="AI-powered toolkit designed to help job seekers apply smarter, not harder. Includes tools for generating personalized cover letters, email builder, and resume optimization for senior roles."
+                tags={["AI", "Job Search", "Automation"]}
+                liveUrl="https://main.d1jgytnx6kv0u.amplifyapp.com"
+                imageUrl="/job-genie.png"
+              />
+              <ProjectCard
+                title="Artemis"
+                date="October 2025 – Present"
+                description="Personal productivity assistant built on n8n and Telegram. Integrates task management, note-taking, reminders, and Perplexity-powered research with voice interaction and calendar sync."
+                tags={["Telegram Bot", "n8n", "Productivity"]}
+                githubUrl="https://github.com/thelonewolf123/artemis-ai"
+                liveUrl="https://artemis-ai-beta.vercel.app"
+                imageUrl="/artemis.png"
+              />
+              <ProjectCard
+                title="WatchWithMe.in"
+                date="April 2024 – Present"
+                description="Chrome extension and mobile app providing a theater-like movie-watching experience for long-distance couples. Features synchronized video playback with integrated voice and video chat."
+                tags={["Chrome Extension", "React Native", "WebRTC"]}
+                stats="3,000+ monthly active users • 12,500+ watch hours"
+                liveUrl="https://www.watchwithme.in"
+                imageUrl="/watchwithme.png"
+              />
+              <ProjectCard
+                title="Stardust.app"
+                date="April 2023 – Present"
+                description="Proof-of-concept container deployment platform built on AWS Spot Instances. Added support for disaster management and one-command infrastructure provisioning with Pulumi."
+                tags={["AWS", "Containers", "Infrastructure"]}
+                githubUrl="https://github.com/thelonewolf123/stardust.app"
+                imageUrl="/architecture.png"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section
+          id="blog"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32 border-t border-border"
+        >
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Blog</h2>
+            <p className="text-lg text-muted-foreground mb-12">
+              I share my insights on frontend development, performance
+              optimization, and building scalable applications.
+            </p>
+            <a
+              href="/blog"
+              className="inline-block px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+            >
+              Read All Articles
+            </a>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section
+          id="contact"
+          className="min-h-screen flex items-center px-4 md:px-8 py-20 md:py-32 border-t border-border"
+        >
+          <div className="max-w-2xl w-full">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              Get in Touch
+            </h2>
+            <p className="text-lg text-muted-foreground mb-12">
+              I'm always interested in hearing about interesting projects and
+              opportunities. Feel free to reach out!
+            </p>
+            <div className="space-y-6">
+              <a
+                href="mailto:harishkumar.vellore@gmail.com"
+                className="flex items-center gap-3 text-lg hover:text-accent transition-colors group"
+              >
+                <MailIcon className="w-6 h-6" />
+                <span>harishkumar.vellore@gmail.com</span>
+                <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="https://linkedin.com/in/harishkumark025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-lg hover:text-accent transition-colors group"
+              >
+                <Linkedin className="w-6 h-6" />
+                <span>linkedin.com/in/harishkumark025</span>
+                <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="https://github.com/thelonewolf123"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-lg hover:text-accent transition-colors group"
+              >
+                <GithubIcon className="w-6 h-6" />
+                <span>github.com/thelonewolf123</span>
+                <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="px-4 md:px-8 py-8 border-t border-border text-center text-sm text-muted-foreground">
+          <p>© 2025 Harish Kumar. Built with Next.js and React.</p>
+        </footer>
+      </div>
     </div>
   );
 }
