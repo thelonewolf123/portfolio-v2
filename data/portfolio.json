@@ -155,29 +155,5 @@
         "description": "I share my insights on frontend development, performance optimization, and building scalable applications.",
         "buttonText": "Read All Articles",
         "buttonUrl": "/blog"
-    },
-    "contact": {
-        "title": "Get in Touch",
-        "description": "I'm always interested in hearing about interesting projects and opportunities. Feel free to reach out!",
-        "contacts": [
-            {
-                "type": "email",
-                "label": "harishkumar.vellore@gmail.com",
-                "url": "mailto:harishkumar.vellore@gmail.com",
-                "icon": "MailIcon"
-            },
-            {
-                "type": "linkedin",
-                "label": "linkedin.com/in/harishkumark025",
-                "url": "https://linkedin.com/in/harishkumark025",
-                "icon": "Linkedin"
-            },
-            {
-                "type": "github",
-                "label": "github.com/thelonewolf123",
-                "url": "https://github.com/thelonewolf123",
-                "icon": "GithubIcon"
-            }
-        ]
     }
 }

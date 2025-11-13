@@ -55,7 +55,7 @@ export default function Home() {
         <BlogSection data={portfolioData.blog} />
 
         {/* Contact */}
-        <ContactSection data={portfolioData.contact} />
+        <ContactSection />
 
         {/* Footer */}
         <footer className="px-4 md:px-8 py-8 border-t border-border text-center text-sm text-muted-foreground">
