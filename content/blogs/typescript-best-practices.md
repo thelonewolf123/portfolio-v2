@@ -4,7 +4,6 @@ description: Essential tips for writing better TypeScript code
 date: 2025-01-10
 author: Harish Kumar
 tags: ["TypeScript", "Best Practices"]
-image: "/placeholder.svg?height=400&width=600"
 ---
 
 # TypeScript Best Practices
@@ -18,18 +17,18 @@ Always define types explicitly rather than relying on inference:
 \`\`\`typescript
 // Good
 interface User {
-  id: number;
-  name: string;
-  email: string;
+id: number;
+name: string;
+email: string;
 }
 
 function getUser(id: number): User {
-  // implementation
+// implementation
 }
 
 // Avoid
 function getUser(id) {
-  // unclear types
+// unclear types
 }
 \`\`\`
 
@@ -39,11 +38,11 @@ Enable strict mode in your tsconfig.json for maximum type safety:
 
 \`\`\`json
 {
-  "compilerOptions": {
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true
-  }
+"compilerOptions": {
+"strict": true,
+"noImplicitAny": true,
+"strictNullChecks": true
+}
 }
 \`\`\`
 

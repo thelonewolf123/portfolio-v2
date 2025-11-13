@@ -4,7 +4,6 @@ description: A comprehensive guide to building your first React application
 date: 2025-01-15
 author: Harish Kumar
 tags: ["React", "JavaScript", "Tutorial"]
-image: "/placeholder.svg?height=400&width=600"
 ---
 
 # Getting Started with React
@@ -38,7 +37,7 @@ Here's a simple React component:
 
 \`\`\`jsx
 function Welcome() {
-  return <h1>Hello, World!</h1>;
+return <h1>Hello, World!</h1>;
 }
 
 export default Welcome;

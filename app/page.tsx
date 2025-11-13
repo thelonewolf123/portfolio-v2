@@ -16,9 +16,40 @@ export default function Home() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolling(scrollPosition > 50);
+
+      // Get all sections
+      const sections = [
+        "about",
+        "experience",
+        "skills",
+        "projects",
+        "blog",
+        "contact"
+      ];
+      const sectionElements = sections.map((id) => document.getElementById(id));
+
+      // Find the current section based on scroll position
+      let currentSection = "about";
+
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // Consider a section active when it's at least 50% visible or when it's at the top
+          if (rect.top <= window.innerHeight * 0.5) {
+            currentSection = sections[i];
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Call once to set initial state
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

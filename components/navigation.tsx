@@ -9,11 +9,12 @@ interface NavigationProps {
 
 export function Navigation({ activeSection, isScrolling }: NavigationProps) {
   const sections = [
-    { id: "/#about", label: "About" },
-    { id: "/#experience", label: "Experience" },
-    { id: "/#skills", label: "Skills" },
-    { id: "/#projects", label: "Projects" },
-    { id: "/#contact", label: "Contact" }
+    { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "blog", label: "Blog" },
+    { id: "contact", label: "Contact" }
   ];
 
   return (
@@ -28,36 +29,60 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
         <div className="text-xl font-bold">HK</div>
         <div className="hidden md:flex items-center gap-8">
           {sections.map((section) => (
-            <Link href={section.id} key={section.id}>
-              <button
-                className={`text-sm font-medium transition-colors ${
-                  activeSection === section.id
-                    ? "text-accent"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {section.label}
-              </button>
-            </Link>
+            <button
+              key={section.id}
+              onClick={() => {
+                if (section.id === "blog") {
+                  // Special handling for blog - it can either scroll to section or go to page
+                  const element = document.getElementById(section.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                } else {
+                  const element = document.getElementById(section.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }
+              }}
+              className={`text-sm font-medium transition-colors ${
+                activeSection === section.id
+                  ? "text-accent"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {section.label}
+            </button>
           ))}
           <Link
             href="/blog"
-            className={`text-sm font-medium transition-colors text-muted-foreground hover:text-foreground`}
+            className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
           >
-            Blog
+            All Articles
           </Link>
         </div>
         <div className="md:hidden">
-          <select className="bg-transparent border border-border rounded px-3 py-1 text-sm">
+          <select
+            className="bg-transparent border border-border rounded px-3 py-1 text-sm"
+            value={activeSection}
+            onChange={(e) => {
+              if (e.target.value && e.target.value !== "blog-page") {
+                const element = document.getElementById(e.target.value);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              } else if (e.target.value === "blog-page") {
+                window.location.href = "/blog";
+              }
+            }}
+          >
             <option value="">Menu</option>
             {sections.map((section) => (
-              <Link href={section.id} key={section.id}>
-                <option value={section.id}>{section.label}</option>
-              </Link>
+              <option key={section.id} value={section.id}>
+                {section.label}
+              </option>
             ))}
-            <Link href={"/blog"}>
-              <option value="blog">Blog</option>
-            </Link>
+            <option value="blog-page">All Articles</option>
           </select>
         </div>
       </div>

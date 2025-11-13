@@ -4,7 +4,6 @@ description: Deep dive into optimizing React applications for speed and efficien
 date: 2025-01-10
 author: Harish Kumar
 tags: ["React", "Performance", "Optimization"]
-image: "/placeholder.svg?height=400&width=600"
 ---
 
 # Performance Optimization in React Apps
@@ -30,11 +29,11 @@ import { lazy, Suspense } from 'react';
 const HeavyComponent = lazy(() => import('./HeavyComponent'));
 
 export default function App() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <HeavyComponent />
-    </Suspense>
-  );
+return (
+<Suspense fallback={<div>Loading...</div>}>
+<HeavyComponent />
+</Suspense>
+);
 }
 \`\`\`
 
@@ -46,7 +45,7 @@ Prevent unnecessary re-renders:
 import { memo } from 'react';
 
 const UserCard = memo(({ user }) => {
-  return <div>{user.name}</div>;
+return <div>{user.name}</div>;
 });
 
 export default UserCard;
@@ -58,11 +57,11 @@ Optimize function and value references:
 
 \`\`\`jsx
 const handleClick = useCallback(() => {
-  fetchData();
+fetchData();
 }, []);
 
 const expensiveValue = useMemo(() => {
-  return calculateExpensiveValue();
+return calculateExpensiveValue();
 }, [dependency]);
 \`\`\`
 
@@ -74,26 +73,28 @@ For large lists, render only visible items:
 import { FixedSizeList } from 'react-window';
 
 const Row = ({ index, style }) => (
+
   <div style={style}>Item {index}</div>
 );
 
 export default function App() {
-  return (
-    <FixedSizeList
+return (
+<FixedSizeList
       height={600}
       itemCount={1000}
       itemSize={35}
       width="100%"
     >
-      {Row}
-    </FixedSizeList>
-  );
+{Row}
+</FixedSizeList>
+);
 }
 \`\`\`
 
 ## Real-World Impact
 
 At Pickyourtrail, implementing these optimization techniques helped us:
+
 - Reduce initial bundle size by 40%
 - Improve Time to Interactive by 2.5 seconds
 - Increase conversion rate by 150%
@@ -117,3 +118,5 @@ Performance optimization is an ongoing process. Start with profiling, identify b
 \`\`\`
 
 ```tsx file="" isHidden
+
+```
