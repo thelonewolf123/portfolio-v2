@@ -25,23 +25,23 @@ React makes it easy to create interactive UIs. Design simple views for each stat
 
 To create a new React application, use Create React App or Vite:
 
-\`\`\`bash
+```bash
 npx create-react-app my-app
 cd my-app
 npm start
-\`\`\`
+```
 
 ## Your First Component
 
 Here's a simple React component:
 
-\`\`\`jsx
+```jsx
 function Welcome() {
-return <h1>Hello, World!</h1>;
+  return <h1>Hello, World!</h1>;
 }
 
 export default Welcome;
-\`\`\`
+```
 
 ## Next Steps
 

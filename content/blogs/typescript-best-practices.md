@@ -14,37 +14,37 @@ TypeScript adds static typing to JavaScript, helping catch errors early and impr
 
 Always define types explicitly rather than relying on inference:
 
-\`\`\`typescript
+```typescript
 // Good
 interface User {
-id: number;
-name: string;
-email: string;
+  id: number;
+  name: string;
+  email: string;
 }
 
 function getUser(id: number): User {
-// implementation
+  // implementation
 }
 
 // Avoid
 function getUser(id) {
-// unclear types
+  // unclear types
 }
-\`\`\`
+```
 
 ## Use Strict Mode
 
 Enable strict mode in your tsconfig.json for maximum type safety:
 
-\`\`\`json
+```json
 {
-"compilerOptions": {
-"strict": true,
-"noImplicitAny": true,
-"strictNullChecks": true
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  }
 }
-}
-\`\`\`
+```
 
 ## Leverage Utility Types
 
