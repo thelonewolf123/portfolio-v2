@@ -9,28 +9,12 @@ export function HeroSection() {
             Harish Kumar
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-2">
-            Senior Frontend Developer
+            Senior Fullstack Developer
           </p>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             Specialized in TypeScript, React, and AWS. I build high-performance,
             scalable interfaces that drive measurable results.
           </p>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 gap-4 mb-12">
-          <div className="border border-border rounded-lg p-4 bg-card/50">
-            <div className="text-2xl font-bold text-accent">150%</div>
-            <div className="text-xs text-muted-foreground mt-1">
-              Conversion Increase
-            </div>
-          </div>
-          <div className="border border-border rounded-lg p-4 bg-card/50">
-            <div className="text-2xl font-bold text-accent">55%</div>
-            <div className="text-xs text-muted-foreground mt-1">
-              Cost Reduction
-            </div>
-          </div>
         </div>
 
         {/* Contact Links */}
