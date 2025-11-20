@@ -53,6 +53,18 @@
                     "Boosted productivity by implementing autocomplete and intellisense features",
                     "Collaborated with instructors to develop data structure and algorithm code execution stack"
                 ]
+            },
+            {
+                "date": "03/2021 - 07/2022",
+                "title": "Member of technical staff",
+                "company": "Facilio",
+                "location": "Chennai, India",
+                "highlights": [
+                    "Developed AI parser using template parsing to process over 6,000 payment receipts, enhancing product marketability",
+                    "Created pivot table feature to aggregate data across modules, improving analysis capabilities",
+                    "Added conditional formatting and calculated fields to increase pivot table functionality",
+                    "Integrated parcel owner parsing from photo with Android and notification system for employee alerts"
+                ]
             }
         ]
     },
@@ -87,6 +99,7 @@
             {
                 "name": "Other",
                 "skills": [
+                    "n8n",
                     "API Integration",
                     "Caching Solutions",
                     "API Design",
