@@ -6,6 +6,8 @@ interface ExperienceCardProps {
   highlights: string[];
 }
 
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+
 export function ExperienceCard({
   date,
   title,
@@ -14,7 +16,7 @@ export function ExperienceCard({
   highlights
 }: ExperienceCardProps) {
   return (
-    <div className="border border-border rounded-lg p-6 bg-card/30 hover:bg-card/50 transition-colors">
+    <SpotlightCard className="border border-border rounded-lg p-6 bg-card/30 hover:bg-card/50 transition-colors">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-lg font-semibold">{title}</h3>
@@ -33,6 +35,6 @@ export function ExperienceCard({
           </li>
         ))}
       </ul>
-    </div>
+    </SpotlightCard>
   );
 }

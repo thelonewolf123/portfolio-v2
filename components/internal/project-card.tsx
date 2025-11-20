@@ -1,6 +1,8 @@
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+
 interface ProjectCardProps {
   title: string;
   date: string;
@@ -23,7 +25,7 @@ export function ProjectCard({
   imageUrl
 }: ProjectCardProps) {
   return (
-    <div className="border border-border rounded-lg overflow-hidden bg-card/30 hover:bg-card/50 transition-colors group">
+    <SpotlightCard className="border border-border rounded-lg overflow-hidden bg-card/30 hover:bg-card/50 transition-colors group">
       {imageUrl && (
         <div className="relative w-full h-48 overflow-hidden bg-muted">
           <Image
@@ -91,6 +93,6 @@ export function ProjectCard({
           ))}
         </div>
       </div>
-    </div>
+    </SpotlightCard>
   );
 }

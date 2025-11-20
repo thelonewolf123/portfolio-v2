@@ -1,4 +1,4 @@
-import { ExternalLink, GithubIcon, Linkedin, MailIcon } from "lucide-react";
+import { GithubIcon, Linkedin, MailIcon } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -9,7 +9,7 @@ export function HeroSection() {
             Harish Kumar
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-2">
-            Senior Fullstack Developer
+            Senior Frontend Developer
           </p>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             Specialized in TypeScript, React, and AWS. I build high-performance,

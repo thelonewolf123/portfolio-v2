@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
+import { ShinyCursor } from "@/components/ui/shiny-cursor"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>{children}</body>
+      <body className={`font-sans antialiased`}>
+        <ShinyCursor />
+        {children}
+      </body>
     </html>
   )
 }
