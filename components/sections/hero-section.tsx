@@ -1,6 +1,8 @@
 import { GithubIcon, Linkedin, MailIcon } from "lucide-react";
 import Image from "next/image";
 
+import { GetInTouchCTA } from "@/components/internal/get-in-touch-cta";
+
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden md:fixed md:left-0 md:top-0 md:w-1/2 md:h-full flex items-center justify-center px-4 md:px-8 py-20 md:py-0 border-b md:border-b-0 md:border-r border-border">
@@ -60,16 +62,7 @@ export function HeroSection() {
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center md:justify-start w-full">
-            <a
-              href="mailto:harishkumar.vellore@gmail.com"
-              className="group relative inline-flex items-center gap-2 px-8 py-3.5 bg-foreground text-background rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            >
-              <span className="relative z-10">Get in Touch</span>
-              <MailIcon className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </a>
-          </div>
+          <GetInTouchCTA />
         </div>
 
         {/* Profile Photo with Gradient Ring */}
