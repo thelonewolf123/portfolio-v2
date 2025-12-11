@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+A modern, responsive developer portfolio built with Next.js 15, featuring smooth animations, a blog section with Markdown support, and a clean design powered by Tailwind CSS and Radix UI.
 
-First, run the development server:
+## ✨ Features
+
+- **Hero Section** - Eye-catching introduction with animated elements
+- **About Section** - Professional summary and background
+- **Experience Timeline** - Career history with company details and highlights
+- **Skills Showcase** - Categorized technical skills (Frontend, Backend & DevOps, Other)
+- **Projects Gallery** - Featured projects with live demos and GitHub links
+- **Blog** - Markdown-powered blog with syntax highlighting
+- **Contact Section** - Get in touch call-to-action
+- **Responsive Navigation** - Scroll-aware navigation with section tracking
+- **Dark Theme** - Modern dark aesthetic with spotlight effects
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) with Typography plugin
+- **UI Components**: [Radix UI](https://www.radix-ui.com) primitives
+- **Animations**: [Framer Motion](https://www.framer.com/motion)
+- **Markdown**: [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview)
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
+- **Typography**: [Geist Font](https://vercel.com/font)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- yarn/npm/pnpm
+
+### Installation
 
 ```bash
-npm run dev
-# or
+# Clone the repository
+git clone https://github.com/thelonewolf123/portfolio-v2.git
+
+# Navigate to the project
+cd portfolio-v2
+
+# Install dependencies
+yarn install
+
+# Start development server
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                    # Next.js App Router pages
+│   ├── blog/              # Blog pages with dynamic [slug] routing
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/
+│   ├── internal/          # Core components (navigation, cards, etc.)
+│   ├── sections/          # Page sections (hero, about, experience, etc.)
+│   └── ui/                # Reusable UI components
+├── content/
+│   └── blogs/             # Markdown blog posts
+├── data/
+│   └── portfolio.json     # Portfolio content (experience, projects, skills)
+├── hooks/                 # Custom React hooks
+└── lib/                   # Utility functions
+```
 
-## Learn More
+## ✏️ Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Update Portfolio Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `data/portfolio.json` to update:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- About section text
+- Work experience
+- Skills categories
+- Featured projects
 
-## Deploy on Vercel
+### Add Blog Posts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create new `.md` files in `content/blogs/` with frontmatter:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```markdown
+---
+title: "Your Blog Title"
+date: "2024-01-15"
+excerpt: "Brief description of the post"
+---
+
+Your content here...
+```
+
+## 📦 Scripts
+
+| Command      | Description              |
+| ------------ | ------------------------ |
+| `yarn dev`   | Start development server |
+| `yarn build` | Build for production     |
+| `yarn start` | Start production server  |
+| `yarn lint`  | Run ESLint               |
+
+## 🌐 Deployment
+
+Deploy easily on [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
