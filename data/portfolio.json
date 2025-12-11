@@ -2,9 +2,9 @@
     "about": {
         "title": "About",
         "paragraphs": [
-            "I'm a Senior Frontend Developer with expertise in building scalable, high-performance web applications. My passion lies in crafting elegant solutions to complex problems, with a focus on user experience and technical excellence.",
-            "At Pickyourtrail, I led the redesign of our hotel booking flow, resulting in a 150% increase in conversions. This experience reinforced my belief that performance optimization and thoughtful UX design go hand-in-hand.",
-            "Beyond frontend development, I have fullstack capabilities including Node.js, database design, and cloud infrastructure. I'm committed to staying current with emerging technologies and best practices."
+            "I am a Senior Full-Stack Engineer who doesn't just write code—I architect systems that scale. With over 4.5 years of experience, I specialize in bridging the gap between high-performance backends and seamless, conversion-driven frontends.",
+            "My approach balances technical depth with business impact. At Pickyourtrail, I architected a high-scale booking flow that drove a 150% increase in conversions. Prior to that, I focused on heavy infrastructure at Codedamn, where I optimized container pipelines to slash operational costs by 55%.",
+            "Beyond the 9-to-5, I build complex distributed systems. I architected 'Artemis' (an AI OS using RabbitMQ and Vector DBs) and 'WatchWithMe' (a P2P streaming platform serving 3,000+ users). I function best in roles where I can own the end-to-end architecture—from the database schema to the pixel-perfect UI."
         ]
     },
     "experience": {
@@ -45,7 +45,7 @@
             },
             {
                 "date": "08/2022 - 02/2023",
-                "title": "Senior IDE Engineer",
+                "title": "Senior Software Engineer (Infrastructure & IDE)",
                 "company": "Codedamn",
                 "location": "Bangalore, India",
                 "highlights": [

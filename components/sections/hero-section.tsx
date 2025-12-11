@@ -23,12 +23,12 @@ export function HeroSection() {
               <div className="h-1 w-24 bg-linear-to-r from-blue-500 via-purple-500 to-transparent mx-auto md:mx-0 rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
-              Senior Frontend Developer
+              Senior Full-Stack Engineer
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
-              Specialized in TypeScript, React, and AWS. I build
-              high-performance, scalable interfaces that drive measurable
-              results.
+              Architecting scalable SaaS platforms with React, Node.js, and AWS.
+              I merge deep frontend expertise with robust backend infrastructure
+              to build complete, production-grade systems.
             </p>
           </div>
 
