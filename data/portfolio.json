@@ -1,12 +1,4 @@
 {
-    "about": {
-        "title": "About",
-        "paragraphs": [
-            "I am a Senior Full-Stack Engineer who doesn't just write code—I architect systems that scale. With over 4.5 years of experience, I specialize in bridging the gap between high-performance backends and seamless, conversion-driven frontends.",
-            "My approach balances technical depth with business impact. At Pickyourtrail, I architected a high-scale booking flow that drove a 150% increase in conversions. Prior to that, I focused on heavy infrastructure at Codedamn, where I optimized container pipelines to slash operational costs by 55%.",
-            "Beyond the 9-to-5, I build complex distributed systems. I architected 'Artemis' (an AI OS using RabbitMQ and Vector DBs) and 'WatchWithMe' (a P2P streaming platform serving 3,000+ users). I function best in roles where I can own the end-to-end architecture—from the database schema to the pixel-perfect UI."
-        ]
-    },
     "experience": {
         "title": "Experience",
         "experiences": [

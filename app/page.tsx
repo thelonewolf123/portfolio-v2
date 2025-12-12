@@ -40,7 +40,7 @@ export default function Home() {
       {/* Content Section */}
       <div className="md:ml-[50%]">
         {/* About */}
-        <AboutSection data={portfolioData.about} />
+        <AboutSection />
 
         {/* Experience */}
         <ExperienceSection data={portfolioData.experience} />
