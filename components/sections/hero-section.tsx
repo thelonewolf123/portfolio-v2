@@ -23,7 +23,7 @@ export function HeroSection() {
               <div className="h-1 w-24 bg-linear-to-r from-blue-500 via-purple-500 to-transparent mx-auto md:mx-0 rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
-              Full-Stack Architect & Systems Engineer
+              Full-Stack Architect
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
               Specializing in high-performance SaaS platforms using React,
