@@ -3,14 +3,17 @@
         "title": "Experience",
         "experiences": [
             {
-                "date": "09/2024 - Current",
-                "title": "Frontend Developer - SDE II",
-                "company": "Pickyourtrail",
+                "date": "11/2024 - Present",
+                "title": "Frontend Developer (SDE II)",
+                "company": "Fluid.travel (PickYourTrail)",
                 "location": "Chennai, India",
                 "highlights": [
-                    "Directed development and delivery of major features including Static Reports and Ledger module",
-                    "Revamped hotel search and booking flow on web and mobile, resulting in 150% increase in bookings",
-                    "Shipped cross-platform capabilities for Preferred Hotels and Cirium integration"
+                    "Owned end-to-end mobile app development using React Native",
+                    "Migrated React Native 0.76 → 0.82, improving performance and stability",
+                    "Revamped hotel search & booking flow, resulting in 150% increase in bookings",
+                    "Built cancellation & reschedule policy module",
+                    "Developed Reports module for operational insights",
+                    "Automated GST invoice retrieval from Indigo flights (100–400 daily bookings)"
                 ]
             },
             {
@@ -19,43 +22,45 @@
                 "company": "BahiKhata Inc",
                 "location": "Noida, India",
                 "highlights": [
-                    "Enabled offline sync functionality for Bahikhata mobile app",
-                    "Implemented multi-session sync to help MSMEs organize transactions across multiple devices",
-                    "Developed SMS parsing to automatically fetch and record transactions"
+                    "Built offline sync functionality for mobile app",
+                    "Implemented multi-session sync across devices for MSMEs",
+                    "Developed SMS parsing for automated transaction recording"
                 ]
             },
             {
                 "date": "02/2023 - 11/2023",
-                "title": "Fullstack Developer",
-                "company": "Klenty soft. inc.",
+                "title": "Full Stack Developer",
+                "company": "Klenty",
                 "location": "Chennai, India",
                 "highlights": [
-                    "Implemented Zipkin distributed tracing to enhance performance measurement",
-                    "Created instant mail tracking feature, reducing latency from 15 minutes to five seconds",
-                    "Designed slow query tracking pipeline for infrastructure optimization"
+                    "Implemented Zipkin distributed tracing for enhanced performance measurement",
+                    "Built real-time mail tracking system, reducing latency from 15 minutes to 5 seconds",
+                    "Designed MongoDB request attribution system for precise per-request observability",
+                    "Built slow query detection pipeline for infrastructure optimization",
+                    "Enabled precise debugging of performance bottlenecks across the stack"
                 ]
             },
             {
                 "date": "08/2022 - 02/2023",
-                "title": "Senior Software Engineer (Infrastructure & IDE)",
+                "title": "Senior IDE Engineer",
                 "company": "Codedamn",
                 "location": "Bangalore, India",
                 "highlights": [
-                    "Optimized container allocation pipeline, achieving 55% reduction in operational costs",
-                    "Boosted productivity by implementing autocomplete and intellisense features",
-                    "Collaborated with instructors to develop data structure and algorithm code execution stack"
+                    "Built DSA playground with custom code execution stack",
+                    "Developed real-time collaborative coding editor",
+                    "Implemented autocomplete & IntelliSense features",
+                    "Reduced infrastructure cost by 55% through container allocation optimization"
                 ]
             },
             {
                 "date": "03/2021 - 07/2022",
-                "title": "Member of technical staff",
+                "title": "Member of Technical Staff",
                 "company": "Facilio",
                 "location": "Chennai, India",
                 "highlights": [
-                    "Developed AI parser using template parsing to process over 6,000 payment receipts, enhancing product marketability",
-                    "Created pivot table feature to aggregate data across modules, improving analysis capabilities",
-                    "Added conditional formatting and calculated fields to increase pivot table functionality",
-                    "Integrated parcel owner parsing from photo with Android and notification system for employee alerts"
+                    "Built advanced pivot table analytics system for cross-module data aggregation",
+                    "Implemented conditional formatting & script columns",
+                    "Enabled spreadsheet-like computations inside product"
                 ]
             }
         ]
@@ -64,38 +69,56 @@
         "title": "Skills",
         "categories": [
             {
-                "name": "Frontend",
+                "name": "Languages",
                 "skills": [
                     "TypeScript",
                     "JavaScript",
+                    "Python"
+                ]
+            },
+            {
+                "name": "Frontend",
+                "skills": [
                     "React",
                     "React Native",
                     "Next.js",
-                    "GraphQL",
-                    "Performance Optimization"
+                    "TailwindCSS",
+                    "Shadcn"
                 ]
             },
             {
-                "name": "Backend & DevOps",
+                "name": "Backend",
                 "skills": [
                     "Node.js",
+                    "GraphQL",
+                    "Express"
+                ]
+            },
+            {
+                "name": "Databases",
+                "skills": [
                     "PostgreSQL",
                     "MongoDB",
                     "Redis",
-                    "AWS",
-                    "CI/CD",
-                    "GitHub Actions",
-                    "Cloud Infrastructure"
+                    "MySQL"
                 ]
             },
             {
-                "name": "Other",
+                "name": "Cloud & DevOps",
                 "skills": [
-                    "n8n",
-                    "API Integration",
-                    "Caching Solutions",
-                    "API Design",
-                    "System Architecture"
+                    "AWS",
+                    "Serverless",
+                    "Docker",
+                    "Pulumi"
+                ]
+            },
+            {
+                "name": "Core Strengths",
+                "skills": [
+                    "Distributed Systems",
+                    "Real-time Systems",
+                    "Observability & Debugging",
+                    "AI-powered Tools"
                 ]
             }
         ]
@@ -103,6 +126,32 @@
     "projects": {
         "title": "Projects",
         "projects": [
+            {
+                "title": "WatchWithMe",
+                "date": "April 2024 – Present",
+                "description": "Real-time watch party platform (Web & Mobile). Scaled to 7,000+ users with paying customers. Built synchronized playback using WebSockets, integrated voice & video chat, and solved hard latency, drift & onboarding challenges.",
+                "tags": [
+                    "WebSockets",
+                    "React Native",
+                    "WebRTC"
+                ],
+                "stats": "7,000+ users • Paying customers",
+                "liveUrl": "https://www.watchwithme.in",
+                "imageUrl": "/watchwithme.png"
+            },
+            {
+                "title": "Artemis",
+                "date": "October 2025 – Present",
+                "description": "Personal AI OS presented at Chennai Web Conf (Dec 2025). Integrates task management, note-taking, reminders, and Perplexity-powered research with voice interaction and calendar sync.",
+                "tags": [
+                    "Telegram Bot",
+                    "n8n",
+                    "Productivity"
+                ],
+                "githubUrl": "https://github.com/thelonewolf123/artemis-ai",
+                "liveUrl": "https://artemis-ai-beta.vercel.app",
+                "imageUrl": "/artemis.png"
+            },
             {
                 "title": "Job Genie",
                 "date": "November 2025 – Present",
@@ -116,35 +165,9 @@
                 "imageUrl": "/job-genie.png"
             },
             {
-                "title": "Artemis",
-                "date": "October 2025 – Present",
-                "description": "Personal productivity assistant built on n8n and Telegram. Integrates task management, note-taking, reminders, and Perplexity-powered research with voice interaction and calendar sync.",
-                "tags": [
-                    "Telegram Bot",
-                    "n8n",
-                    "Productivity"
-                ],
-                "githubUrl": "https://github.com/thelonewolf123/artemis-ai",
-                "liveUrl": "https://artemis-ai-beta.vercel.app",
-                "imageUrl": "/artemis.png"
-            },
-            {
-                "title": "WatchWithMe.in",
-                "date": "April 2024 – Present",
-                "description": "Chrome extension and mobile app providing a theater-like movie-watching experience for long-distance couples. Features synchronized video playback with integrated voice and video chat.",
-                "tags": [
-                    "Chrome Extension",
-                    "React Native",
-                    "WebRTC"
-                ],
-                "stats": "4,000+ monthly active users • 14,000+ watch hours",
-                "liveUrl": "https://www.watchwithme.in",
-                "imageUrl": "/watchwithme.png"
-            },
-            {
                 "title": "Stardust.app",
                 "date": "April 2023 – Present",
-                "description": "Proof-of-concept container deployment platform built on AWS Spot Instances. Added support for disaster management and one-command infrastructure provisioning with Pulumi.",
+                "description": "Container deployment platform built on AWS Spot Instances with disaster recovery and one-command infrastructure provisioning via Pulumi.",
                 "tags": [
                     "AWS",
                     "Containers",
@@ -157,7 +180,7 @@
     },
     "blog": {
         "title": "Blog",
-        "description": "I share my insights on frontend development, performance optimization, and building scalable applications.",
+        "description": "I write about full-stack engineering, real-time systems, observability, and building AI-powered tools.",
         "buttonText": "Read All Articles",
         "buttonUrl": "/blog"
     }

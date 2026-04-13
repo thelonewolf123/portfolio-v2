@@ -10,26 +10,52 @@ export function AboutSection() {
         <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
         <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
           <p>
-            I am a results-obsessed Full-Stack Engineer focused on system
-            architecture and measurable business impact. With nearly five years
-            of intensive experience in high-growth environments, I specialize in
-            bridging the gap between complex, scalable backend engineering and
-            seamless, high-conversion user experiences.
+            Full-stack engineer with 5+ years of experience building scalable
+            web and mobile applications. I built and scaled{" "}
+            <Link
+              href="https://www.watchwithme.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              WatchWithMe
+            </Link>{" "}
+            — a real-time watch party platform — from zero to 7,000+ users with
+            paying customers. Currently building{" "}
+            <Link
+              href="https://artemis-ai-beta.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Aegis
+            </Link>
+            , an AI system for querying and debugging production systems via
+            natural language.
           </p>
 
           <p>
-            My approach balances technical depth with business outcomes. At{" "}
+            I care about measurable outcomes. At{" "}
             <Link
               href="https://www.pickyourtrail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
             >
-              Pickyourtrail
+              Fluid.travel (PickYourTrail)
             </Link>
-            , I re-architected a high-scale booking flow to reduce friction,
-            driving a verified 150% increase in conversion rates (driving
-            significant revenue uplift). Prior to that, at{" "}
+            , I revamped the hotel booking flow driving a 150% increase in
+            bookings. At{" "}
+            <Link
+              href="https://klenty.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Klenty
+            </Link>
+            , I rebuilt the mail tracking system reducing latency from 15
+            minutes to 5 seconds. At{" "}
             <Link
               href="https://codedamn.com"
               target="_blank"
@@ -38,34 +64,16 @@ export function AboutSection() {
             >
               Codedamn
             </Link>
-            , I focused on heavy infrastructure optimization, utilizing
-            container pipelines (Docker/Kubernetes) to slash AWS operational
-            costs by 55% while improving uptime.
+            , I cut infrastructure costs by 55% through container allocation
+            optimization.
           </p>
 
           <p>
-            Beyond core responsibilities, I build complex distributed systems to
-            stay on the bleeding edge. I architected{" "}
-            <Link
-              href="https://artemis-ai-beta.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              Artemis
-            </Link>{" "}
-            (an AI OS leveraging RabbitMQ and Vector DBs for context awareness)
-            and built{" "}
-            <Link
-              href="https://watchwithme.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              WatchWithMe
-            </Link>
-            , a P2P streaming platform currently serving over 3,000 monthly
-            active users with low-latency performance.
+            My core strengths are real-time systems, observability, and
+            distributed architecture. I was an invited speaker at Chennai Web
+            Conf (Dec 2025) where I presented on{" "}
+            <span className="text-foreground">"Artemis: Personal AI OS"</span>,
+            focusing on AI-native applications and personal AI systems.
           </p>
         </div>
       </div>

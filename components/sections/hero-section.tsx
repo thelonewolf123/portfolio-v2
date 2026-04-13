@@ -23,13 +23,13 @@ export function HeroSection() {
               <div className="h-1 w-24 bg-linear-to-r from-blue-500 via-purple-500 to-transparent mx-auto md:mx-0 rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
-              Full-Stack Architect
+              Full Stack Engineer
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
-              Specializing in high-performance SaaS platforms using React,
-              Node.js, and AWS. I merge complex backend infrastructure with
-              conversion-driven frontend execution to build production-grade
-              systems that handle scale.
+              Built and scaled WatchWithMe to 7,000+ users with paying
+              customers. Currently building Aegis — an AI system for querying
+              and debugging production systems. Strong in real-time systems,
+              observability, and distributed architecture.
             </p>
           </div>
 

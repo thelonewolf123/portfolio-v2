@@ -59,7 +59,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="px-4 md:px-8 py-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© 2025 Harish Kumar. Built with Next.js and React.</p>
+          <p>© 2026 Harish Kumar. Built with Next.js and React.</p>
         </footer>
       </div>
     </div>
