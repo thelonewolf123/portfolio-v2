@@ -165,6 +165,18 @@
                 "imageUrl": "/job-genie.png"
             },
             {
+                "title": "Aegis",
+                "date": "March 2026 – Present",
+                "description": "An AI system for querying and debugging production systems via natural language. Connect your databases, logs, and infrastructure — ask questions in plain English, get answers with code, charts, and actionable insights. Features Natural Language Queries translated to SQL/CloudWatch/APIs, Multi-Source Correlation across PostgreSQL, CloudWatch Logs, and IP geolocation, Production Debugging with a 4-phase investigation framework, defense-in-depth sandboxing (Docker → iptables → NSJail → seccomp), Real-Time Streaming via SSE, and dual deployment as FastAPI chatbot or FastMCP server.",
+                "tags": [
+                    "AI",
+                    "Production Debugging",
+                    "Infrastructure"
+                ],
+                "liveUrl": "https://aegis-wwm.vercel.app",
+                "imageUrl": "/aegis.png"
+            },
+            {
                 "title": "Stardust.app",
                 "date": "April 2023 – Present",
                 "description": "Container deployment platform built on AWS Spot Instances with disaster recovery and one-command infrastructure provisioning via Pulumi.",
@@ -174,6 +186,7 @@
                     "Infrastructure"
                 ],
                 "githubUrl": "https://github.com/thelonewolf123/stardust.app",
+                "liveUrl": "https://stardust-app-zeta.vercel.app",
                 "imageUrl": "/architecture.png"
             }
         ]
@@ -182,6 +195,22 @@
         "title": "Blog",
         "description": "I write about full-stack engineering, real-time systems, observability, and building AI-powered tools.",
         "buttonText": "Read All Articles",
-        "buttonUrl": "/blog"
+        "buttonUrl": "/blog",
+        "featuredPosts": [
+            {
+                "slug": "building-real-time-systems-with-websockets",
+                "title": "Building Real-Time Systems with WebSockets",
+                "description": "Architecture decisions, scaling strategies, and lessons learned from building a real-time watch party platform serving 7,000+ users.",
+                "date": "2025-01-15",
+                "tags": ["WebSockets", "React Native", "WebRTC"]
+            },
+            {
+                "slug": "observability-in-production",
+                "title": "Observability in Production: From Zipkin Tracing to 5-Second Latency",
+                "description": "How implementing distributed tracing and real-time mail tracking reduced latency from 15 minutes to 5 seconds at Klenty.",
+                "date": "2025-01-10",
+                "tags": ["Observability", "Distributed Tracing", "Performance"]
+            }
+        ]
     }
 }

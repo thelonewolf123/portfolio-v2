@@ -10,7 +10,22 @@ export const metadata: Metadata = {
   title: "Harish Kumar - Full Stack Engineer",
   description:
     "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
-  generator: "v0.app",
+  openGraph: {
+    title: "Harish Kumar - Full Stack Engineer",
+    description:
+      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
+    url: "https://harishkumar.dev",
+    siteName: "Harish Kumar",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harish Kumar - Full Stack Engineer",
+    description:
+      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
+  },
+  robots: { index: true, follow: true },
 }
 
 import { ShinyCursor } from "@/components/ui/shiny-cursor"

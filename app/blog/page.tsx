@@ -4,7 +4,7 @@ import { Navigation } from "@/components/internal/navigation";
 
 export const metadata = {
   title: "Blog - Harish Kumar",
-  description: "Articles about web development, TypeScript, React, and more."
+  description: "Articles about real-time systems, distributed architecture, observability, and building scalable applications."
 };
 
 export default async function BlogPage() {

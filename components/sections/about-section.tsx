@@ -8,6 +8,28 @@ export function AboutSection() {
     >
       <div className="max-w-2xl w-full">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {[
+            { value: "7,000+", label: "Users Scaled" },
+            { value: "150%", label: "Booking Growth" },
+            { value: "5s", label: "Latency (was 15min)" },
+            { value: "55%", label: "Cost Reduction" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-lg border border-border bg-accent/5 p-4 text-center"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-accent">
+                {stat.value}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
           <p>
             Full-stack engineer with 5+ years of experience building scalable
@@ -23,7 +45,7 @@ export function AboutSection() {
             — a real-time watch party platform — from zero to 7,000+ users with
             paying customers. Currently building{" "}
             <Link
-              href="https://artemis-ai-beta.vercel.app"
+              href="https://aegis-wwm.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"

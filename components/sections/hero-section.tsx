@@ -1,4 +1,4 @@
-import { GithubIcon, Linkedin, MailIcon } from "lucide-react";
+import { FileDown, GithubIcon, Linkedin, MailIcon } from "lucide-react";
 import Image from "next/image";
 
 import { GetInTouchCTA } from "@/components/internal/get-in-touch-cta";
@@ -25,9 +25,22 @@ export function HeroSection() {
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
               Full Stack Engineer
             </p>
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 border border-green-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              Open to Work
+            </div>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
               Built and scaled WatchWithMe to 7,000+ users with paying
-              customers. Currently building Aegis — an AI system for querying
+              customers. Currently building{" "}
+              <a
+                href="https://aegis-wwm.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-blue-500/50 hover:decoration-blue-500 transition-all"
+              >
+                Aegis
+              </a>{" "}
+              — an AI system for querying
               and debugging production systems. Strong in real-time systems,
               observability, and distributed architecture.
             </p>
@@ -62,8 +75,19 @@ export function HeroSection() {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <GetInTouchCTA />
+          {/* Resume & CTA */}
+          <div className="flex flex-col items-center md:items-start gap-3 w-full">
+            <a
+              href="/Harish_resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <FileDown className="w-4 h-4" />
+              Download Resume (PDF)
+            </a>
+            <GetInTouchCTA />
+          </div>
         </div>
 
         {/* Profile Photo with Gradient Ring */}
