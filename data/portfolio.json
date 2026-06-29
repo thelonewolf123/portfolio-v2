@@ -198,18 +198,25 @@
         "buttonUrl": "/blog",
         "featuredPosts": [
             {
-                "slug": "building-real-time-systems-with-websockets",
-                "title": "Building Real-Time Systems with WebSockets",
-                "description": "Architecture decisions, scaling strategies, and lessons learned from building a real-time watch party platform serving 7,000+ users.",
-                "date": "2025-01-15",
-                "tags": ["WebSockets", "React Native", "WebRTC"]
+                "slug": "the-case-against-dont-reinvent-the-wheel",
+                "title": "The Case Against 'Don't Reinvent the Wheel'",
+                "description": "Why building complex systems from scratch is the best way to truly understand architecture.",
+                "date": "2026-06-28",
+                "tags": ["Engineering", "Architecture", "Learning"]
             },
             {
-                "slug": "observability-in-production",
-                "title": "Observability in Production: From Zipkin Tracing to 5-Second Latency",
-                "description": "How implementing distributed tracing and real-time mail tracking reduced latency from 15 minutes to 5 seconds at Klenty.",
-                "date": "2025-01-10",
-                "tags": ["Observability", "Distributed Tracing", "Performance"]
+                "slug": "building-ai-agents-that-actually-work",
+                "title": "Building AI Agents That Actually Work",
+                "description": "Tool composition, closed feedback loops, and making AI an engineer you empower.",
+                "date": "2026-04-16",
+                "tags": ["AI", "Agents", "LLM"]
+            },
+            {
+                "slug": "real-ai-coding-workflows-beyond-figma-dumps",
+                "title": "Real AI Coding Workflows: Beyond Figma Dumps",
+                "description": "How to structure AI coding agents with micro-component prompting and proper guidelines.",
+                "date": "2026-05-28",
+                "tags": ["AI", "Coding", "Workflow"]
             }
         ]
     }
