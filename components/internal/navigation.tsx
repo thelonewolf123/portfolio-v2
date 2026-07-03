@@ -70,7 +70,13 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
             href="/blog"
             className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
           >
-            All Articles
+            Articles
+          </Link>
+          <Link
+            href="/docs"
+            className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
+          >
+            Docs
           </Link>
         </div>
         <div className="md:hidden">
@@ -90,6 +96,8 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
                 }
               } else if (e.target.value === "blog-page") {
                 router.push("/blog");
+              } else if (e.target.value === "docs-page") {
+                router.push("/docs");
               }
             }}
           >
@@ -99,7 +107,8 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
                 {section.label}
               </option>
             ))}
-            <option value="blog-page">All Articles</option>
+            <option value="blog-page">Articles</option>
+            <option value="docs-page">Docs</option>
           </select>
         </div>
       </div>

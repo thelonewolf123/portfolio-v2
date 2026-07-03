@@ -1,0 +1,62 @@
+:root {
+  --ifm-color-primary: #4777ff;
+  --ifm-color-primary-dark: #2d5feb;
+  --ifm-color-primary-darker: #1a4ad4;
+  --ifm-color-primary-darkest: #0d34ad;
+  --ifm-color-primary-light: #638bff;
+  --ifm-color-primary-lighter: #7c9eff;
+  --ifm-color-primary-lightest: #9eb8ff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-card-background-color: #ffffff;
+  --ifm-footer-background-color: #f8f9fa;
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-secondary: #6b7280;
+  --ifm-hero-text-color: #1a1a1a;
+  --ifm-code-background: #f5f5f5;
+  --ifm-toc-border-color: #e5e7eb;
+  --ifm-menu-color-background-active: rgba(71, 119, 255, 0.1);
+  --ifm-menu-color-active: #4777ff;
+  --ifm-navbar-link-color: #1a1a1a;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #7c9eff;
+  --ifm-color-primary-dark: #638bff;
+  --ifm-color-primary-darker: #4777ff;
+  --ifm-color-primary-darkest: #2d5feb;
+  --ifm-color-primary-light: #9eb8ff;
+  --ifm-color-primary-lighter: #b8cbff;
+  --ifm-color-primary-lightest: #d4e0ff;
+  --docusaurus-highlighted-code-line-bg: rgba(71, 119, 255, 0.15);
+  --ifm-background-color: #0d0d0d;
+  --ifm-navbar-background-color: #141414;
+  --ifm-background-surface-color: #1a1a1a;
+  --ifm-card-background-color: #1a1a1a;
+  --ifm-footer-background-color: #080808;
+  --ifm-font-color-base: #e5e7eb;
+  --ifm-font-color-secondary: #9ca3af;
+  --ifm-hero-text-color: #ffffff;
+  --ifm-code-background: #1a1a1a;
+  --ifm-toc-border-color: #2a2a2a;
+  --ifm-menu-color-background-active: rgba(124, 158, 255, 0.1);
+  --ifm-menu-color-active: #7c9eff;
+  --ifm-navbar-link-color: #e5e7eb;
+  --ifm-navbar-link-hover-color: #7c9eff;
+}
+
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.navbar__brand,
+.navbar__title {
+  color: var(--ifm-navbar-link-color);
+}
+
+[data-theme='dark'] .footer {
+  border-top: 1px solid #2a2a2a;
+}

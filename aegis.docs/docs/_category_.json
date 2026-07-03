@@ -1,0 +1,9 @@
+{
+  "position": 1,
+  "label": "Architecture Documentation",
+  "link": {
+    "type": "generated-index",
+    "description": "Complete technical documentation for the **Aegis Agent** — a dual-mode AI data analysis system for WatchWithMe. Covers architecture, agent system, tools, sandbox, security, API, frontend, deployment, and design patterns."
+  },
+  "collapsed": false
+}

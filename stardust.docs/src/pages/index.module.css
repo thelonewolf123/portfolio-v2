@@ -1,0 +1,95 @@
+.heroBanner {
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+}
+
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #080808 0%, #141414 50%, #1a1a1a 100%);
+}
+
+.heroBanner :global(.hero__title),
+.heroBanner :global(.hero__subtitle) {
+  color: #1a1a1a;
+}
+
+[data-theme='dark'] .heroBanner :global(.hero__title),
+[data-theme='dark'] .heroBanner :global(.hero__subtitle) {
+  color: #ffffff;
+}
+
+.heroBanner :global(.hero__title) {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.heroBanner :global(.hero__subtitle) {
+  font-size: 1.3rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.heroBanner :global(.button--secondary) {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.heroBanner :global(.button--secondary:hover) {
+  opacity: 0.85;
+}
+
+[data-theme='dark'] .heroBanner :global(.button--secondary) {
+  background-color: #e5e7eb;
+  border-color: #e5e7eb;
+  color: #1a1a1a;
+}
+
+[data-theme='dark'] .heroBanner :global(.button--secondary:hover) {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.heroBanner :global(.button--outline) {
+  border-color: #4777ff;
+  color: #4777ff;
+}
+
+.heroBanner :global(.button--outline:hover) {
+  background-color: #4777ff;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .heroBanner :global(.button--outline) {
+  border-color: #7c9eff;
+  color: #7c9eff;
+}
+
+[data-theme='dark'] .heroBanner :global(.button--outline:hover) {
+  background-color: #7c9eff;
+  color: #0d0d0d;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+  .heroBanner :global(.hero__title) {
+    font-size: 2rem;
+  }
+}
+
+.features {
+  padding: 4rem 0;
+}

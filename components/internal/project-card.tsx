@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Calendar } from "lucide-react";
+import { ExternalLink, Github, Calendar, BookOpen } from "lucide-react";
 import Image from "next/image";
 
 import { SpotlightCard } from "@/components/ui/spotlight-card";
@@ -11,6 +11,7 @@ interface ProjectCardProps {
   stats?: string;
   liveUrl?: string;
   githubUrl?: string;
+  docsUrl?: string;
   imageUrl?: string;
 }
 
@@ -22,6 +23,7 @@ export function ProjectCard({
   stats,
   liveUrl,
   githubUrl,
+  docsUrl,
   imageUrl
 }: ProjectCardProps) {
   return (
@@ -72,7 +74,7 @@ export function ProjectCard({
           ))}
         </div>
 
-        {(liveUrl || githubUrl) && (
+        {(liveUrl || githubUrl || docsUrl) && (
           <div className="flex gap-3 mt-auto pt-4 border-t border-border/50">
             {liveUrl && (
               <a
@@ -83,6 +85,15 @@ export function ProjectCard({
               >
                 <ExternalLink className="w-4 h-4" />
                 Live Demo
+              </a>
+            )}
+            {docsUrl && (
+              <a
+                href={docsUrl}
+                className="flex-1 inline-flex justify-center items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary border border-primary/30 text-sm font-medium hover:bg-primary/20 transition-colors"
+              >
+                <BookOpen className="w-4 h-4" />
+                Docs
               </a>
             )}
             {githubUrl && (
