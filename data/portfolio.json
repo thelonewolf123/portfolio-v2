@@ -173,7 +173,6 @@
                     "Production Debugging",
                     "Infrastructure"
                 ],
-                "liveUrl": "https://aegis-wwm.vercel.app",
                 "docsUrl": "/docs/aegis/",
                 "imageUrl": "/aegis.png"
             },
@@ -187,7 +186,6 @@
                     "Infrastructure"
                 ],
                 "githubUrl": "https://github.com/thelonewolf123/stardust.app",
-                "liveUrl": "https://stardust-app-zeta.vercel.app",
                 "docsUrl": "/docs/stardust/",
                 "imageUrl": "/architecture.png"
             }
@@ -204,21 +202,33 @@
                 "title": "The Case Against 'Don't Reinvent the Wheel'",
                 "description": "Why building complex systems from scratch is the best way to truly understand architecture.",
                 "date": "2026-06-28",
-                "tags": ["Engineering", "Architecture", "Learning"]
+                "tags": [
+                    "Engineering",
+                    "Architecture",
+                    "Learning"
+                ]
             },
             {
                 "slug": "building-ai-agents-that-actually-work",
                 "title": "Building AI Agents That Actually Work",
                 "description": "Tool composition, closed feedback loops, and making AI an engineer you empower.",
                 "date": "2026-04-16",
-                "tags": ["AI", "Agents", "LLM"]
+                "tags": [
+                    "AI",
+                    "Agents",
+                    "LLM"
+                ]
             },
             {
                 "slug": "real-ai-coding-workflows-beyond-figma-dumps",
                 "title": "Real AI Coding Workflows: Beyond Figma Dumps",
                 "description": "How to structure AI coding agents with micro-component prompting and proper guidelines.",
                 "date": "2026-05-28",
-                "tags": ["AI", "Coding", "Workflow"]
+                "tags": [
+                    "AI",
+                    "Coding",
+                    "Workflow"
+                ]
             }
         ]
     }

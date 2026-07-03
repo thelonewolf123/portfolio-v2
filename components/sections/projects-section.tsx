@@ -7,6 +7,7 @@ interface Project {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  docsUrl?: string;
   imageUrl?: string;
   stats?: string;
 }
@@ -38,6 +39,7 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
               tags={project.tags}
               liveUrl={project.liveUrl}
               githubUrl={project.githubUrl}
+              docsUrl={project.docsUrl}
               imageUrl={project.imageUrl}
               stats={project.stats}
             />
