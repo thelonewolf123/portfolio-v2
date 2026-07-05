@@ -16,6 +16,7 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
     { id: "skills", label: "Skills" },
+    { id: "flagship-projects", label: "Flagship" },
     { id: "projects", label: "Projects" },
     { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" }

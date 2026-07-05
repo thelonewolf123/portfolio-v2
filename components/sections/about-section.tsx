@@ -14,7 +14,7 @@ export function AboutSection() {
             { value: "7,000+", label: "Users Scaled" },
             { value: "150%", label: "Booking Growth" },
             { value: "5s", label: "Latency (was 15min)" },
-            { value: "55%", label: "Cost Reduction" },
+            { value: "55%", label: "Cost Reduction" }
           ].map((stat) => (
             <div
               key={stat.label}
@@ -45,15 +45,22 @@ export function AboutSection() {
             — a real-time watch party platform — from zero to 7,000+ users with
             paying customers. Currently building{" "}
             <Link
-              href="https://aegis-wwm.vercel.app"
-              target="_blank"
+              href="/docs/aegis"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
             >
               Aegis
             </Link>
             , an AI system for querying and debugging production systems via
-            natural language.
+            natural language, and{" "}
+            <Link
+              href="/docs/stardust/"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Stardust
+            </Link>
+            , a container deployment platform on AWS Spot Instances with full
+            technical documentation.
           </p>
 
           <p>

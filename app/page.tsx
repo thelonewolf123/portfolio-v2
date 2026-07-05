@@ -5,6 +5,7 @@ import {
   AboutSection,
   ExperienceSection,
   SkillsSection,
+  FlagshipProjectsSection,
   ProjectsSection,
   BlogSection,
   HeroSection,
@@ -18,6 +19,7 @@ export default function Home() {
     "about",
     "experience",
     "skills",
+    "flagship-projects",
     "projects",
     "blog",
     "contact"
@@ -47,6 +49,9 @@ export default function Home() {
 
         {/* Skills */}
         <SkillsSection data={portfolioData.skills} />
+
+        {/* Flagship Projects */}
+        <FlagshipProjectsSection data={portfolioData.flagshipProjects} />
 
         {/* Projects */}
         <ProjectsSection data={portfolioData.projects} />

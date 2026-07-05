@@ -9,11 +9,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Harish Kumar - Full Stack Engineer",
   description:
-    "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
+    "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
   openGraph: {
     title: "Harish Kumar - Full Stack Engineer",
     description:
-      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
+      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
     url: "https://harishkumar.dev",
     siteName: "Harish Kumar",
     locale: "en_US",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Harish Kumar - Full Stack Engineer",
     description:
-      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Currently building Aegis — an AI system for querying and debugging production systems.",
+      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
   },
   robots: { index: true, follow: true },
 }

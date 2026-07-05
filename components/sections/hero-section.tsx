@@ -33,15 +33,20 @@ export function HeroSection() {
               Built and scaled WatchWithMe to 7,000+ users with paying
               customers. Currently building{" "}
               <a
-                href="https://aegis-wwm.vercel.app"
-                target="_blank"
+                href="/docs/aegis"
                 rel="noopener noreferrer"
                 className="underline decoration-blue-500/50 hover:decoration-blue-500 transition-all"
               >
                 Aegis
               </a>{" "}
-              — an AI system for querying
-              and debugging production systems. Strong in real-time systems,
+              (AI debugging system) and{" "}
+              <a
+                href="/docs/stardust/"
+                className="underline decoration-purple-500/50 hover:decoration-purple-500 transition-all"
+              >
+                Stardust
+              </a>{" "}
+              (container deployment platform). Strong in real-time systems,
               observability, and distributed architecture.
             </p>
           </div>

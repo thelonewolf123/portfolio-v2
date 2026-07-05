@@ -123,6 +123,114 @@
             }
         ]
     },
+    "flagshipProjects": {
+        "title": "Flagship Projects",
+        "subtitle": "Production-grade systems built from the ground up, with full technical documentation",
+        "projects": [
+            {
+                "title": "Aegis",
+                "tagline": "AI-powered production debugging system",
+                "date": "March 2026 – Present",
+                "description": "A dual-mode AI framework that lets you query and debug production systems using natural language. Connect databases, logs, and infrastructure — ask questions in plain English, get answers with code, charts, and actionable insights.",
+                "features": [
+                    "Natural Language Queries translated to SQL, CloudWatch, and APIs",
+                    "Multi-Source Correlation across PostgreSQL, CloudWatch Logs, and IP geolocation",
+                    "Defense-in-Depth Sandboxing: Docker → iptables → NSJail → seccomp",
+                    "Real-Time Streaming via Server-Sent Events",
+                    "Dual Deployment: FastAPI chatbot or FastMCP server",
+                    "Production Debugging with 4-phase investigation framework"
+                ],
+                "techStack": [
+                    "Python",
+                    "FastAPI",
+                    "LangGraph",
+                    "OpenRouter",
+                    "NSJail",
+                    "PostgreSQL",
+                    "Docker",
+                    "Alpine.js"
+                ],
+                "stats": "13 architecture docs • 12 design patterns • 4 security layers",
+                "githubUrl": "https://github.com/thelonewolf123/aegis",
+                "docsUrl": "/docs/aegis/",
+                "docSections": [
+                    {
+                        "label": "Architecture",
+                        "href": "/docs/aegis/architecture"
+                    },
+                    {
+                        "label": "Agent System",
+                        "href": "/docs/aegis/agent-system"
+                    },
+                    {
+                        "label": "Security Model",
+                        "href": "/docs/aegis/security"
+                    },
+                    {
+                        "label": "Design Patterns",
+                        "href": "/docs/aegis/design-patterns"
+                    },
+                    {
+                        "label": "Deployment",
+                        "href": "/docs/aegis/deployment"
+                    }
+                ],
+                "imageUrl": "/aegis.png"
+            },
+            {
+                "title": "Stardust.app",
+                "tagline": "Container provisioning engine on AWS Spot Instances",
+                "date": "April 2023 – Present",
+                "description": "A complete container deployment platform that takes you from a GitHub repository to a running container on AWS — with real-time monitoring, SSH access, and disaster recovery. Built on Spot Instances with on-demand fallback.",
+                "features": [
+                    "One-click deploy from any GitHub repository",
+                    "Automatic Docker image building on EC2 builder instances",
+                    "Spot Instance orchestration with on-demand fallback",
+                    "Real-time log streaming via SSE and WebSocket SSH",
+                    "Webhook-triggered rebuilds on git push",
+                    "Container checkpointing and spot termination handling"
+                ],
+                "techStack": [
+                    "Next.js",
+                    "TypeScript",
+                    "GraphQL",
+                    "Apollo",
+                    "MongoDB",
+                    "Redis",
+                    "RabbitMQ",
+                    "AWS EC2",
+                    "Docker",
+                    "Pulumi"
+                ],
+                "stats": "6 microservices • 27 doc pages • IaC with Pulumi",
+                "githubUrl": "https://github.com/thelonewolf123/stardust.app",
+                "docsUrl": "/docs/stardust/",
+                "docSections": [
+                    {
+                        "label": "Architecture",
+                        "href": "/docs/stardust/architecture"
+                    },
+                    {
+                        "label": "Infrastructure",
+                        "href": "/docs/stardust/infrastructure/overview"
+                    },
+                    {
+                        "label": "Microservices",
+                        "href": "/docs/stardust/services/overview"
+                    },
+                    {
+                        "label": "Deployment",
+                        "href": "/docs/stardust/deployment"
+                    },
+                    {
+                        "label": "CLI Tool",
+                        "href": "/docs/stardust/cli-tool"
+                    }
+                ],
+                "imageUrl": "/architecture.png"
+            }
+        ]
+    },
     "projects": {
         "title": "Projects",
         "projects": [
@@ -163,31 +271,6 @@
                 ],
                 "liveUrl": "https://main.d1jgytnx6kv0u.amplifyapp.com",
                 "imageUrl": "/job-genie.png"
-            },
-            {
-                "title": "Aegis",
-                "date": "March 2026 – Present",
-                "description": "An AI system for querying and debugging production systems via natural language. Connect your databases, logs, and infrastructure — ask questions in plain English, get answers with code, charts, and actionable insights. Features Natural Language Queries translated to SQL/CloudWatch/APIs, Multi-Source Correlation across PostgreSQL, CloudWatch Logs, and IP geolocation, Production Debugging with a 4-phase investigation framework, defense-in-depth sandboxing (Docker → iptables → NSJail → seccomp), Real-Time Streaming via SSE, and dual deployment as FastAPI chatbot or FastMCP server.",
-                "tags": [
-                    "AI",
-                    "Production Debugging",
-                    "Infrastructure"
-                ],
-                "docsUrl": "/docs/aegis/",
-                "imageUrl": "/aegis.png"
-            },
-            {
-                "title": "Stardust.app",
-                "date": "April 2023 – Present",
-                "description": "Container deployment platform built on AWS Spot Instances with disaster recovery and one-command infrastructure provisioning via Pulumi.",
-                "tags": [
-                    "AWS",
-                    "Containers",
-                    "Infrastructure"
-                ],
-                "githubUrl": "https://github.com/thelonewolf123/stardust.app",
-                "docsUrl": "/docs/stardust/",
-                "imageUrl": "/architecture.png"
             }
         ]
     },
