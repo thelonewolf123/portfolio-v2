@@ -45,7 +45,34 @@ export const metadata: Metadata = {
       "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
     images: ["/og-image.png"]
   },
-  robots: { index: true, follow: true }
+  robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      {
+        url: "/favicon-assets/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png"
+      },
+      {
+        url: "/favicon-assets/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png"
+      },
+      {
+        url: "/favicon-assets/favicon.svg",
+        type: "image/svg+xml"
+      }
+    ],
+    apple: [
+      {
+        url: "/favicon-assets/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png"
+      }
+    ]
+  },
+  manifest: "/favicon-assets/site.webmanifest"
 };
 
 export default function RootLayout({
