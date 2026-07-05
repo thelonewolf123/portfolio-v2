@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import { access, readFile, stat } from "fs/promises";
 import path from "path";
 
 const BUILD_DIRS: Record<string, string> = {
   aegis: path.join(process.cwd(), "aegis.docs", "build"),
-  stardust: path.join(process.cwd(), "stardust.docs", "build"),
+  stardust: path.join(process.cwd(), "stardust.docs", "build")
 };
 
 const MIME_TYPES: Record<string, string> = {
@@ -25,7 +25,7 @@ const MIME_TYPES: Record<string, string> = {
   ".xml": "application/xml",
   ".txt": "text/plain",
   ".map": "application/json",
-  ".pdf": "application/pdf",
+  ".pdf": "application/pdf"
 };
 
 function getContentType(filePath: string): string {
@@ -33,8 +33,17 @@ function getContentType(filePath: string): string {
   return MIME_TYPES[ext] || "application/octet-stream";
 }
 
+async function pathExists(p: string): Promise<boolean> {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ slug: string[] }> }
 ) {
   const { slug } = await params;
@@ -58,31 +67,36 @@ export async function GET(
   }
 
   let finalPath = filePath;
-  if (!fs.existsSync(finalPath)) {
+  if (!(await pathExists(finalPath))) {
     const indexPath = path.join(filePath, "index.html");
-    if (fs.existsSync(indexPath)) {
+    if (await pathExists(indexPath)) {
       finalPath = indexPath;
     }
   }
 
-  if (fs.statSync(finalPath).isDirectory()) {
-    const indexPath = path.join(finalPath, "index.html");
-    if (fs.existsSync(indexPath)) {
-      finalPath = indexPath;
-    }
-  }
-
-  if (!fs.existsSync(finalPath) || !fs.statSync(finalPath).isFile()) {
+  const finalStat = await stat(finalPath).catch(() => null);
+  if (!finalStat) {
     return new NextResponse("Not Found", { status: 404 });
   }
 
-  const content = fs.readFileSync(finalPath);
+  if (finalStat.isDirectory()) {
+    const indexPath = path.join(finalPath, "index.html");
+    if (await pathExists(indexPath)) {
+      finalPath = indexPath;
+    } else {
+      return new NextResponse("Not Found", { status: 404 });
+    }
+  } else if (!finalStat.isFile()) {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
+  const content = await readFile(finalPath);
   const contentType = getContentType(finalPath);
 
   return new NextResponse(content, {
     headers: {
       "Content-Type": contentType,
-      "Cache-Control": "public, max-age=3600, immutable",
-    },
+      "Cache-Control": "public, max-age=3600, immutable"
+    }
   });
 }

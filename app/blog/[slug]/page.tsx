@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
   try {
-    const post = getBlogPostBySlug(slug);
+    const post = await getBlogPostBySlug(slug);
     return {
       title: `${post.title} - Harish Kumar`,
       description: post.description,

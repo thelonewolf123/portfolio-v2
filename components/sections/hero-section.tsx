@@ -12,7 +12,7 @@ export function HeroSection() {
         <div className="absolute -bottom-32 -right-10 w-80 h-80 bg-linear-to-tl from-purple-500/20 via-blue-500/10 to-transparent blur-3xl" />
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8 md:gap-12 w-full max-w-md md:max-w-2xl">
         <div className="relative max-w-md w-full flex flex-col items-center md:items-start gap-8 text-center md:text-left">
           {/* Name and Title */}
           <div className="space-y-4 w-full">
@@ -96,7 +96,7 @@ export function HeroSection() {
         </div>
 
         {/* Profile Photo with Gradient Ring */}
-        <div className="relative w-44 aspect-square self-center md:self-start shrink-0">
+        <div className="relative w-32 md:w-44 aspect-square shrink-0">
           <div
             className="absolute inset-0 rounded-full bg-linear-to-br from-blue-500/60 via-purple-500/30 to-transparent blur-2xl"
             aria-hidden

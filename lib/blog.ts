@@ -1,4 +1,4 @@
-import fs from "fs";
+import { readFile, readdir } from "fs/promises";
 import path from "path";
 
 import matter from "gray-matter";
@@ -17,22 +17,21 @@ export interface BlogPost {
 const blogDir = path.join(process.cwd(), "content", "blogs");
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const files = fs.readdirSync(blogDir);
-  const posts = files
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => {
-      const slug = file.replace(".md", "");
-      return getBlogPostBySlug(slug);
-    });
+  const files = await readdir(blogDir);
+  const posts = await Promise.all(
+    files
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => getBlogPostBySlug(file.replace(".md", "")))
+  );
 
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost {
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
   const filePath = path.join(blogDir, `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const fileContent = await readFile(filePath, "utf-8");
 
   const { data, content } = matter(fileContent);
 

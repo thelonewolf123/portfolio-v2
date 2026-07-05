@@ -1,11 +1,15 @@
 import type { MetadataRoute } from "next";
 
 import { getAllBlogPosts } from "@/lib/blog";
+import { getDocPages } from "@/lib/docs";
 
 const SITE_URL = "https://harishkumar.info";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getAllBlogPosts();
+  const [posts, docPages] = await Promise.all([
+    getAllBlogPosts(),
+    getDocPages()
+  ]);
 
   return [
     {
@@ -25,16 +29,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.7
     },
-    {
-      url: `${SITE_URL}/docs/aegis/`,
-      changeFrequency: "monthly",
-      priority: 0.6
-    },
-    {
-      url: `${SITE_URL}/docs/stardust/`,
-      changeFrequency: "monthly",
-      priority: 0.6
-    },
+    ...docPages.map((page) => ({
+      ...page,
+      url: `${SITE_URL}${page.url}`
+    })),
     ...posts.map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}/`,
       lastModified: new Date(post.date),
