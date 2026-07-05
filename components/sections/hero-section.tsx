@@ -33,7 +33,7 @@ export function HeroSection() {
               Built and scaled WatchWithMe to 7,000+ users with paying
               customers. Currently building{" "}
               <a
-                href="/docs/aegis"
+                href="/docs/aegis/"
                 rel="noopener noreferrer"
                 className="underline decoration-blue-500/50 hover:decoration-blue-500 transition-all"
               >

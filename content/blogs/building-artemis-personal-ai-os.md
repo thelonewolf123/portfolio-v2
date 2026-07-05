@@ -1,5 +1,5 @@
 ---
-title: Building Artemis: A Personal AI OS
+title: "Building Artemis: A Personal AI OS"
 description: How I built an AI assistant that learns, remembers, and evolves with you over time
 date: 2025-11-29
 author: Harish Kumar

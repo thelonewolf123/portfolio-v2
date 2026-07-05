@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+import matter from "gray-matter";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -32,57 +34,16 @@ export function getBlogPostBySlug(slug: string): BlogPost {
   const filePath = path.join(blogDir, `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
 
-  const { metadata, content } = parseMarkdown(fileContent);
+  const { data, content } = matter(fileContent);
 
   return {
     slug,
-    title: metadata.title || "Untitled",
-    description: metadata.description || "",
-    date: metadata.date || new Date().toISOString(),
-    author: metadata.author || "Harish Kumar",
-    tags: metadata.tags || [],
+    title: data.title ?? "Untitled",
+    description: data.description ?? "",
+    date: data.date ?? new Date().toISOString(),
+    author: data.author ?? "Harish Kumar",
+    tags: data.tags ?? [],
     content,
-    image: metadata.image
+    image: data.image
   };
-}
-
-function parseMarkdown(content: string): {
-  metadata: Record<string, any>;
-  content: string;
-} {
-  const lines = content.split("\n");
-  const metadata: Record<string, any> = {};
-
-  let startIdx = 0;
-  let endIdx = 0;
-
-  if (lines[0] === "---") {
-    startIdx = 1;
-    endIdx = lines.findIndex((line, idx) => idx > 0 && line === "---");
-
-    if (endIdx !== -1) {
-      lines.slice(startIdx, endIdx).forEach((line) => {
-        const [key, ...values] = line.split(":");
-        const value = values.join(":").trim();
-
-        if (key && value) {
-          if (value.startsWith("[") && value.endsWith("]")) {
-            metadata[key.trim()] = JSON.parse(value);
-          } else if (value === "true" || value === "false") {
-            metadata[key.trim()] = value === "true";
-          } else {
-            metadata[key.trim()] = value.replace(/^["']|["']$/g, "");
-          }
-        }
-      });
-
-      const markdownContent = lines
-        .slice(endIdx + 1)
-        .join("\n")
-        .trim();
-      return { metadata, content: markdownContent };
-    }
-  }
-
-  return { metadata, content };
 }

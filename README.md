@@ -1,83 +1,95 @@
 # Portfolio
 
-A modern, responsive developer portfolio built with Next.js 15, featuring smooth animations, a blog section with Markdown support, and a clean design powered by Tailwind CSS and Radix UI.
+A modern, responsive developer portfolio built with Next.js 16, featuring smooth animations, a blog section with Markdown support, and a clean design powered by Tailwind CSS and Radix UI.
 
 ## ✨ Features
 
-- **Hero Section** - Eye-catching introduction with animated elements
-- **About Section** - Professional summary and background
-- **Experience Timeline** - Career history with company details and highlights
-- **Skills Showcase** - Categorized technical skills (Frontend, Backend & DevOps, Other)
-- **Projects Gallery** - Featured projects with live demos and GitHub links
-- **Blog** - Markdown-powered blog with syntax highlighting
-- **Contact Section** - Get in touch call-to-action
-- **Responsive Navigation** - Scroll-aware navigation with section tracking
-- **Dark Theme** - Modern dark aesthetic with spotlight effects
+- **Hero Section** — Eye-catching introduction with animated elements and a split-pane layout on desktop
+- **About Section** — Professional summary and background with key metrics
+- **Experience Timeline** — Career history with company details and quantified highlights
+- **Skills Showcase** — Categorized technical skills
+- **Flagship Projects** — Deep-dive cards for Aegis and Stardust with linkable documentation
+- **Projects Gallery** — Side projects with live demos and GitHub links
+- **Blog** — Markdown-powered blog with frontmatter
+- **Contact Section** — Direct email, LinkedIn, GitHub, and resume
+- **Custom 404 and error pages**
+- **SEO** — Sitemap, robots.txt, JSON-LD `Person` schema, Open Graph
+- **Accessibility** — Skip-to-content link, `prefers-reduced-motion` support
+- **Vercel Analytics** — Built-in
+- **Responsive Navigation** — Scroll-aware top nav with proper mobile drawer
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com) with Typography plugin
-- **UI Components**: [Radix UI](https://www.radix-ui.com) primitives
-- **Animations**: [Framer Motion](https://www.framer.com/motion)
-- **Markdown**: [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview)
+- **Framework**: [Next.js 16](https://nextjs.org) (App Router, RSC, static generation)
+- **Language**: TypeScript (strict)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com)
+- **UI**: Radix UI primitives via custom shadcn-style components
+- **Animations**: [Framer Motion](https://www.framer.com/motion) (gated by `prefers-reduced-motion`)
+- **Markdown**: [gray-matter](https://github.com/jonschlinkert/gray-matter) for frontmatter
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
-- **Typography**: [Geist Font](https://vercel.com/font)
+- **Typography**: Geist + Geist Mono (via `next/font`)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- yarn/npm/pnpm
+- npm / yarn / pnpm
 
 ### Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/thelonewolf123/portfolio-v2.git
-
-# Navigate to the project
 cd portfolio-v2
-
-# Install dependencies
-yarn install
-
-# Start development server
-yarn dev
+npm install
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
+### Production build
+
+The build script also builds two Docusaurus sub-projects (Aegis docs and Stardust docs) which are served at `/docs/aegis/` and `/docs/stardust/`. The first build will take a few minutes.
+
+```bash
+npm run build
+```
+
+If you do not need the Docusaurus sites locally, you can run `next build` directly.
+
 ## 📁 Project Structure
 
 ```
-├── app/                    # Next.js App Router pages
-│   ├── blog/              # Blog pages with dynamic [slug] routing
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
+├── app/                       # Next.js App Router
+│   ├── blog/                  # Blog index + dynamic [slug] routing
+│   ├── docs/                  # /docs page + [...slug] route serving Docusaurus builds
+│   ├── not-found.tsx          # Custom 404
+│   ├── error.tsx              # Error boundary
+│   ├── loading.tsx            # Skeleton loading state
+│   ├── sitemap.ts             # Auto-generated sitemap
+│   ├── robots.ts              # robots.txt
+│   ├── layout.tsx             # Root layout
+│   └── page.tsx               # Home page
 ├── components/
-│   ├── internal/          # Core components (navigation, cards, etc.)
-│   ├── sections/          # Page sections (hero, about, experience, etc.)
-│   └── ui/                # Reusable UI components
+│   ├── internal/              # Domain components (nav, footer, cards, etc.)
+│   ├── sections/              # Page sections (hero, about, experience, etc.)
+│   └── ui/                    # Reusable primitives (sheet, spotlight, etc.)
 ├── content/
-│   └── blogs/             # Markdown blog posts
+│   └── blogs/                 # Markdown blog posts with frontmatter
 ├── data/
-│   └── portfolio.json     # Portfolio content (experience, projects, skills)
-├── hooks/                 # Custom React hooks
-└── lib/                   # Utility functions
+│   └── portfolio.json         # Portfolio content (experience, projects, skills)
+├── hooks/                     # Custom React hooks
+├── lib/                       # Utility functions
+├── aegis.docs/                # Docusaurus sub-project for Aegis
+├── stardust.docs/             # Docusaurus sub-project for Stardust
+└── public/                    # Static assets
 ```
 
 ## ✏️ Customization
 
 ### Update Portfolio Content
 
-Edit `data/portfolio.json` to update:
-
-- About section text
-- Work experience
-- Skills categories
-- Featured projects
+Edit `data/portfolio.json` to update experience, skills, projects, and blog references.
 
 ### Add Blog Posts
 
@@ -86,8 +98,11 @@ Create new `.md` files in `content/blogs/` with frontmatter:
 ```markdown
 ---
 title: "Your Blog Title"
-date: "2024-01-15"
-excerpt: "Brief description of the post"
+description: "Brief description for SEO and previews"
+date: "2026-01-15"
+author: "Harish Kumar"
+tags: ["Engineering", "Architecture"]
+image: "/optional-cover.png"
 ---
 
 Your content here...
@@ -95,12 +110,13 @@ Your content here...
 
 ## 📦 Scripts
 
-| Command      | Description              |
-| ------------ | ------------------------ |
-| `yarn dev`   | Start development server |
-| `yarn build` | Build for production     |
-| `yarn start` | Start production server  |
-| `yarn lint`  | Run ESLint               |
+| Command              | Description                                                    |
+| -------------------- | -------------------------------------------------------------- |
+| `npm run dev`        | Start development server                                       |
+| `npm run build:docs` | Build both Docusaurus sub-projects                            |
+| `npm run build`      | Build docs then build the Next.js app for production          |
+| `npm run start`      | Start production server                                        |
+| `npm run lint`       | Run ESLint                                                     |
 
 ## 🌐 Deployment
 
@@ -110,4 +126,4 @@ Deploy easily on [Vercel](https://vercel.com):
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the MIT License.

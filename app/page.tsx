@@ -1,6 +1,7 @@
 "use client";
 
 import { Navigation } from "@/components/internal/navigation";
+import { Footer } from "@/components/internal/footer";
 import {
   AboutSection,
   ExperienceSection,
@@ -33,39 +34,19 @@ export default function Home() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      {/* Navigation */}
       <Navigation activeSection={activeSection} isScrolling={isScrolling} />
 
-      {/* Hero Section */}
       <HeroSection />
 
-      {/* Content Section */}
-      <div className="md:ml-[50%]">
-        {/* About */}
+      <div id="main" className="md:ml-[50%]">
         <AboutSection />
-
-        {/* Experience */}
         <ExperienceSection data={portfolioData.experience} />
-
-        {/* Skills */}
         <SkillsSection data={portfolioData.skills} />
-
-        {/* Flagship Projects */}
         <FlagshipProjectsSection data={portfolioData.flagshipProjects} />
-
-        {/* Projects */}
         <ProjectsSection data={portfolioData.projects} />
-
-        {/* Blog Section */}
         <BlogSection data={portfolioData.blog} />
-
-        {/* Contact */}
         <ContactSection />
-
-        {/* Footer */}
-        <footer className="px-4 md:px-8 py-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© 2026 Harish Kumar. Built with Next.js and React.</p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

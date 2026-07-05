@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
+import { MobileNav } from "@/components/internal/mobile-nav";
+
 interface NavigationProps {
   activeSection: string;
   isScrolling: boolean;
@@ -21,6 +23,17 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
     { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" }
   ];
+
+  const scrollToSection = (id: string) => {
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav
@@ -41,23 +54,7 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
           {sections.map((section) => (
             <button
               key={section.id}
-              onClick={() => {
-                if (pathname !== "/") {
-                  // If not on home page, navigate to home page with anchor
-                  router.push(`/#${section.id}`);
-                } else if (section.id === "blog") {
-                  // Special handling for blog - it can either scroll to section or go to page
-                  const element = document.getElementById(section.id);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                } else {
-                  const element = document.getElementById(section.id);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              }}
+              onClick={() => scrollToSection(section.id)}
               className={`text-sm font-medium transition-colors ${
                 activeSection === section.id
                   ? "text-accent"
@@ -68,50 +65,19 @@ export function Navigation({ activeSection, isScrolling }: NavigationProps) {
             </button>
           ))}
           <Link
-            href="/blog"
+            href="/blog/"
             className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
           >
             Articles
           </Link>
           <Link
-            href="/docs"
+            href="/docs/"
             className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
           >
             Docs
           </Link>
         </div>
-        <div className="md:hidden">
-          <select
-            className="bg-transparent border border-border rounded px-3 py-1 text-sm"
-            value={activeSection}
-            onChange={(e) => {
-              if (e.target.value && e.target.value !== "blog-page") {
-                if (pathname !== "/") {
-                  // If not on home page, navigate to home page with anchor
-                  router.push(`/#${e.target.value}`);
-                } else {
-                  const element = document.getElementById(e.target.value);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              } else if (e.target.value === "blog-page") {
-                router.push("/blog");
-              } else if (e.target.value === "docs-page") {
-                router.push("/docs");
-              }
-            }}
-          >
-            <option value="">Menu</option>
-            {sections.map((section) => (
-              <option key={section.id} value={section.id}>
-                {section.label}
-              </option>
-            ))}
-            <option value="blog-page">Articles</option>
-            <option value="docs-page">Docs</option>
-          </select>
-        </div>
+        <MobileNav activeSection={activeSection} />
       </div>
     </nav>
   );

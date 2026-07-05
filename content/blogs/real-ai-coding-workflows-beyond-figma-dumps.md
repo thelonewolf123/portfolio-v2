@@ -1,5 +1,5 @@
 ---
-title: Real AI Coding Workflows: Beyond Figma Dumps
+title: "Real AI Coding Workflows: Beyond Figma Dumps"
 description: How to structure AI coding agents with micro-component prompting and proper guidelines
 date: 2026-05-28
 author: Harish Kumar

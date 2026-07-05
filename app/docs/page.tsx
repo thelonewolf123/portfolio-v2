@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Navigation } from "@/components/internal/navigation";
+import { Footer } from "@/components/internal/footer";
 import { BookOpen, ArrowRight, FileText, Layers } from "lucide-react";
 
 export const metadata = {
   title: "Documentation - Harish Kumar",
   description:
     "Technical documentation for Aegis and Stardust — architecture, design patterns, and system details.",
+  alternates: { canonical: "/docs/" }
 };
 
 const docProjects = [
@@ -36,7 +38,7 @@ export default function DocsPage() {
     <div className="bg-background text-foreground min-h-screen">
       <Navigation activeSection="" isScrolling={true} />
 
-      <main className="pt-24 pb-16">
+      <main id="main" className="pt-24 pb-16">
         <div className="px-4 md:px-8 max-w-5xl mx-auto">
           <div className="mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
@@ -96,6 +98,7 @@ export default function DocsPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

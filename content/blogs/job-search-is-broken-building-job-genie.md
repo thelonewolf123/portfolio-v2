@@ -1,5 +1,5 @@
 ---
-title: Job Search is Broken: Building Job Genie
+title: "Job Search is Broken: Building Job Genie"
 description: Why LinkedIn's "Top Applicant" badge is misleading and how honest fit scoring helps candidates
 date: 2026-04-25
 author: Harish Kumar

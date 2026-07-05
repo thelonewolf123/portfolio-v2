@@ -1,5 +1,5 @@
 ---
-title: From P2P to LiveKit: Scaling WatchWithMe
+title: "From P2P to LiveKit: Scaling WatchWithMe"
 description: How we migrated from peer-to-peer WebRTC to an SFU architecture and what we learned about infrastructure trade-offs
 date: 2025-11-04
 author: Harish Kumar

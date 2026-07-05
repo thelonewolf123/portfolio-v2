@@ -175,7 +175,7 @@
                         "href": "/docs/aegis/deployment"
                     }
                 ],
-                "imageUrl": "/aegis.png"
+                "imageUrl": "/aegis.webp"
             },
             {
                 "title": "Stardust.app",
@@ -227,7 +227,7 @@
                         "href": "/docs/stardust/cli-tool"
                     }
                 ],
-                "imageUrl": "/architecture.png"
+                "imageUrl": "/architecture.webp"
             }
         ]
     },
@@ -245,7 +245,7 @@
                 ],
                 "stats": "7,000+ users • Paying customers",
                 "liveUrl": "https://www.watchwithme.in",
-                "imageUrl": "/watchwithme.png"
+                "imageUrl": "/watchwithme.webp"
             },
             {
                 "title": "Artemis",
@@ -258,7 +258,7 @@
                 ],
                 "githubUrl": "https://github.com/thelonewolf123/artemis-ai",
                 "liveUrl": "https://artemis-ai-beta.vercel.app",
-                "imageUrl": "/artemis.png"
+                "imageUrl": "/artemis.webp"
             },
             {
                 "title": "Job Genie",
@@ -270,7 +270,7 @@
                     "Automation"
                 ],
                 "liveUrl": "https://main.d1jgytnx6kv0u.amplifyapp.com",
-                "imageUrl": "/job-genie.png"
+                "imageUrl": "/job-genie.webp"
             }
         ]
     },

@@ -1,5 +1,5 @@
 ---
-title: How Chrome Works: A Deep Dive
+title: "How Chrome Works: A Deep Dive"
 description: Inside look at modern browser architecture - processes, threads, and the journey of a URL
 date: 2023-08-16
 author: Harish Kumar

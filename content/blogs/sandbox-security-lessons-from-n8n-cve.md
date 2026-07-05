@@ -1,5 +1,5 @@
 ---
-title: Sandbox Security: Lessons from the n8n CVE
+title: "Sandbox Security: Lessons from the n8n CVE"
 description: Why language sandboxes aren't security boundaries and how to properly isolate code execution
 date: 2026-01-19
 author: Harish Kumar

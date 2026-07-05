@@ -1,10 +1,13 @@
 import { getAllBlogPosts } from "@/lib/blog";
 import { BlogCard } from "@/components/internal/blog-card";
 import { Navigation } from "@/components/internal/navigation";
+import { Footer } from "@/components/internal/footer";
 
 export const metadata = {
   title: "Blog - Harish Kumar",
-  description: "Articles about real-time systems, distributed architecture, observability, and building scalable applications."
+  description:
+    "Articles about real-time systems, distributed architecture, observability, and building scalable applications.",
+  alternates: { canonical: "/blog/" }
 };
 
 export default async function BlogPage() {
@@ -14,7 +17,7 @@ export default async function BlogPage() {
     <div className="bg-background text-foreground min-h-screen">
       <Navigation activeSection="blog" isScrolling={true} />
 
-      <main className="pt-24 pb-12">
+      <main id="main" className="pt-24 pb-12">
         <div className="px-4 md:px-8 max-w-4xl mx-auto">
           <div className="mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
@@ -40,6 +43,7 @@ export default async function BlogPage() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

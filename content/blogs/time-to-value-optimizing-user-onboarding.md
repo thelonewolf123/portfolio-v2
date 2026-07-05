@@ -1,5 +1,5 @@
 ---
-title: Time to Value: Optimizing User Onboarding
+title: "Time to Value: Optimizing User Onboarding"
 description: How we increased signup completion by 3x by removing decisions before value
 date: 2025-12-29
 author: Harish Kumar

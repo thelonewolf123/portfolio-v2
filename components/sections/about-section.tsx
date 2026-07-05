@@ -45,7 +45,7 @@ export function AboutSection() {
             — a real-time watch party platform — from zero to 7,000+ users with
             paying customers. Currently building{" "}
             <Link
-              href="/docs/aegis"
+              href="/docs/aegis/"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
             >

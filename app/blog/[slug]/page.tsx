@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     const post = getBlogPostBySlug(slug);
     return {
       title: `${post.title} - Harish Kumar`,
-      description: post.description
+      description: post.description,
+      alternates: { canonical: `/blog/${post.slug}/` }
     };
   } catch {
     return {
@@ -47,12 +48,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <div className="bg-background text-foreground min-h-screen">
       <Navigation activeSection="blog" isScrolling={true} />
 
-      <main className="pt-24 pb-16">
+      <main id="main" className="pt-24 pb-16">
         <article className="px-4 md:px-8 max-w-2xl mx-auto">
           {/* Header */}
           <header className="mb-12">
             <Link
-              href="/blog"
+              href="/blog/"
               className="text-accent hover:underline text-sm mb-6 inline-block"
             >
               ← Back to Blog
