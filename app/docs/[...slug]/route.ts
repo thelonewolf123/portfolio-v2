@@ -60,10 +60,21 @@ export async function GET(
   }
 
   const restPath = slug.slice(1).join("/");
-  const filePath = path.join(buildDir, restPath);
+  let filePath = path.join(buildDir, restPath);
 
   if (!filePath.startsWith(buildDir)) {
     return new NextResponse("Forbidden", { status: 403 });
+  }
+
+  // Fallback: if the direct path doesn't exist, try with `docs/` prefix.
+  // Docusaurus's preset-classic defaults to routeBasePath "/docs", so
+  // canonical URLs are /docs/<project>/docs/<page>/. This makes the shorter
+  // /docs/<project>/<page>/ form also work.
+  if (!(await pathExists(filePath))) {
+    const docsPrefixed = path.join(buildDir, "docs", restPath);
+    if (await pathExists(docsPrefixed)) {
+      filePath = docsPrefixed;
+    }
   }
 
   let finalPath = filePath;

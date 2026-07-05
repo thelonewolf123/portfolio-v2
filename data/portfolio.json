@@ -156,23 +156,23 @@
                 "docSections": [
                     {
                         "label": "Architecture",
-                        "href": "/docs/aegis/architecture"
+                        "href": "/docs/aegis/docs/architecture"
                     },
                     {
                         "label": "Agent System",
-                        "href": "/docs/aegis/agent-system"
+                        "href": "/docs/aegis/docs/agent-system"
                     },
                     {
                         "label": "Security Model",
-                        "href": "/docs/aegis/security"
+                        "href": "/docs/aegis/docs/security"
                     },
                     {
                         "label": "Design Patterns",
-                        "href": "/docs/aegis/design-patterns"
+                        "href": "/docs/aegis/docs/design-patterns"
                     },
                     {
                         "label": "Deployment",
-                        "href": "/docs/aegis/deployment"
+                        "href": "/docs/aegis/docs/deployment"
                     }
                 ],
                 "imageUrl": "/aegis.webp"
@@ -208,23 +208,23 @@
                 "docSections": [
                     {
                         "label": "Architecture",
-                        "href": "/docs/stardust/architecture"
+                        "href": "/docs/stardust/docs/architecture"
                     },
                     {
                         "label": "Infrastructure",
-                        "href": "/docs/stardust/infrastructure/overview"
+                        "href": "/docs/stardust/docs/infrastructure/overview"
                     },
                     {
                         "label": "Microservices",
-                        "href": "/docs/stardust/services/overview"
+                        "href": "/docs/stardust/docs/services/overview"
                     },
                     {
                         "label": "Deployment",
-                        "href": "/docs/stardust/deployment"
+                        "href": "/docs/stardust/docs/deployment"
                     },
                     {
                         "label": "CLI Tool",
-                        "href": "/docs/stardust/cli-tool"
+                        "href": "/docs/stardust/docs/cli-tool"
                     }
                 ],
                 "imageUrl": "/architecture.webp"
