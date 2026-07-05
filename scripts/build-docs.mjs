@@ -28,8 +28,8 @@ function run(cmd, args, cwd) {
 for (const name of projects) {
   const projectDir = path.join(PROJECTS_DIR, name);
   console.log(`\n→ Building ${name}...`);
-  await run("npm", ["install"], projectDir);
-  await run("npm", ["run", "build"], projectDir);
+  await run("yarn", ["install", "--frozen-lockfile"], projectDir);
+  await run("yarn", ["run", "build"], projectDir);
 }
 
 console.log(`\n✓ Built ${projects.length} project${projects.length === 1 ? "" : "s"}: ${projects.join(", ")}`);
