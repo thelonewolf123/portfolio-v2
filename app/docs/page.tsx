@@ -1,16 +1,26 @@
 import Link from "next/link";
 import { Navigation } from "@/components/internal/navigation";
 import { Footer } from "@/components/internal/footer";
-import { BookOpen, ArrowRight, FileText, Layers } from "lucide-react";
+import { BookOpen, ArrowRight, FileText, Layers, MessageSquare } from "lucide-react";
 
 export const metadata = {
   title: "Documentation - Harish Kumar",
   description:
-    "Technical documentation for Aegis and Stardust — architecture, design patterns, and system details.",
+    "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details.",
   alternates: { canonical: "/docs/" }
 };
 
 const docProjects = [
+  {
+    title: "Mail Pilot",
+    tagline: "AI-native email client",
+    description:
+      "Technical architecture documentation for Mail Pilot — an AI-native email client built with Next.js, CopilotKit, and the Gmail API. Covers the AI agent system, state management, integrations, security, extensibility, and engineering decisions.",
+    href: "/docs/mail-pilot/",
+    docCount: "25+ documents across 9 categories",
+    features: ["AI Agent System", "State Management", "Security & HITL", "Engineering Decisions"],
+    icon: MessageSquare,
+  },
   {
     title: "Aegis",
     tagline: "AI-powered production debugging system",

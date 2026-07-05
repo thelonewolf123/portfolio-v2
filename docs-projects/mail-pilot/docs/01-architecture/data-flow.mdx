@@ -1,0 +1,225 @@
+---
+sidebar_position: 2
+---
+
+# Data Flow
+
+This page documents the major data flows through the system.
+
+## 1. Email Listing Flow
+
+When a user visits a folder view (inbox, sent, drafts, spam), threads are fetched, filtered, and rendered in a virtualized list.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Page as Server Component
+    participant TL as ThreadList
+    participant Store as Zustand Store
+    participant RQ as React Query
+    participant SA as Server Action
+    participant Gmail as Gmail API
+    
+    User->>Page: Visit / (inbox)
+    Page->>TL: Render <ThreadList labelIds={["INBOX"]} />
+    TL->>Store: Read current filters
+    Store-->>TL: { sender, subject, keyword, dateRange, readStatus }
+    TL->>RQ: useThreads(labelIds, query)
+    RQ->>SA: listThreadsAction({ labelIds, q, maxResults: 30 })
+    SA->>SA: requireAuth() → getServerSession
+    SA->>Gmail: users.messages.list({ labelIds, q })
+    Gmail-->>SA: { messages[], nextPageToken }
+    SA->>Gmail: users.messages.get(format: "metadata") for each
+    Gmail-->>SA: ThreadListItem[]
+    SA-->>RQ: { threads, nextPageToken }
+    RQ-->>TL: data (cached, staleTime: 30s)
+    TL->>TL: Render virtualized list (@tanstack/react-virtual)
+    Note over TL: Infinite scroll: fetchNextPage() when 3 items from bottom
+```
+
+### Filter Compilation
+
+Filters from the Zustand store are compiled into a Gmail search query:
+
+```
+Filters: { sender: "alice", subject: "meeting", 
+            keyword: "Q4", startDate: "2025/01/01", 
+            endDate: "2025/06/30", readStatus: "unread" }
+
+Gmail Query: "from:alice subject:meeting Q4 
+              after:2025/01/01 before:2025/06/30 is:unread"
+```
+
+## 2. Thread Detail Flow
+
+Opening a thread fetches the full conversation with all messages, parsed chronologically.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant TD as ThreadDetail
+    participant Store as Zustand Store
+    participant RQ as React Query
+    participant SA as Server Action
+    participant Gmail as Gmail API
+    participant AI as CopilotKit Context
+    
+    User->>TD: Click thread → /r/{threadId}
+    TD->>RQ: useThread(threadId)
+    RQ->>SA: getThreadAction(threadId)
+    SA->>Gmail: users.threads.get({ format: "full" })
+    Gmail-->>SA: Thread with messages
+    SA->>SA: parseMessage() for each message
+    SA-->>RQ: Thread data
+    RQ-->>TD: { messages[], threadId }
+    TD->>Store: setCurrentThreadId(id)
+    TD->>Store: setCurrentThreadSubject(subject)
+    TD->>Store: setOpenEmail(latest message, truncated 4k chars)
+    Store-->>AI: Exposed as useCopilotReadable context
+    TD->>TD: Sort messages chronologically
+    TD->>TD: Render MessageCard per message
+```
+
+## 3. Compose & Send Flow
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant CF as ComposeForm
+    participant CStore as ComposeStore
+    participant AStore as ApprovalStore
+    participant Dialog as ApprovalDialog
+    participant SA as Server Action
+    participant Gmail as Gmail API
+    
+    alt Manual compose
+        User->>CF: Type in fields
+        CF->>CStore: setComposeDraft({ to, cc, subject, body })
+    else AI-assisted reply
+        User->>AI: "Reply to Alice about the meeting"
+        AI->>AI: Calls fill_compose_form() or reply_to_thread()
+        AI->>CStore: setComposeDraft(...)
+        CStore-->>CF: Re-renders with filled form
+    else AI-assisted forward
+        User->>AI: "Forward this to bob@example.com"
+        AI->>AI: Calls forward_message()
+        AI->>CStore: setComposeDraft({ to: "bob@...", subject: "Fwd: ...", body: "...Forwarded message..." })
+        CStore-->>CF: Re-renders with pre-filled forward
+    end
+    
+    User->>CF: Click Send
+    CF->>AStore: requestApproval("send_email", data)
+    AStore->>Dialog: state = "waiting"
+    Dialog->>User: Show email preview
+    
+    alt User approves
+        User->>Dialog: Approve
+        Dialog->>AStore: approveApproval()
+        AStore-->>CF: approved
+        CF->>SA: sendMessageAction(body)
+        SA->>SA: buildEmailHtml() + buildMessage() (MIME)
+        SA->>Gmail: users.messages.send({ raw: base64url })
+        Gmail-->>SA: { id, threadId }
+        SA-->>CF: success
+        CF->>CStore: clearComposeDraft()
+    else User rejects
+        User->>Dialog: Reject
+        Dialog->>CF: Close, no action
+    else User edits
+        User->>Dialog: Edit (pauses approval)
+        Dialog->>AStore: setApprovalPaused(true)
+        User->>CF: Edit form manually
+        User->>CF: Click Send → re-triggers approval
+    end
+```
+
+## 4. Real-Time Sync (Pub/Sub + Pusher)
+
+Real-time sync uses a three-stage relay. The watch is established during auth, and new mail flows through Pub/Sub → webhook → Pusher → React Query.
+
+### Watch Setup (triggered during auth)
+
+```mermaid
+sequenceDiagram
+    participant Google as Google OAuth
+    participant JWT as JWT Callback
+    participant Gmail as Gmail API
+    participant PubSub as Cloud Pub/Sub
+    
+    Note over JWT: On sign-in or token refresh
+    JWT->>Google: OAuth tokens received
+    JWT->>JWT: createGmailClientFromTokens()
+    JWT->>Gmail: users.watch({ topicName })
+    Gmail-->>JWT: { historyId, expiration }
+    Gmail->>PubSub: Configured to publish on new mail
+```
+
+### Incoming Mail Flow
+
+```mermaid
+sequenceDiagram
+    participant Gmail as Gmail API
+    participant PubSub as Cloud Pub/Sub
+    participant Webhook as /api/gmail-webhook
+    participant Pusher as Pusher.com
+    participant RS as useRealtimeSync
+    participant RQ as React Query
+    
+    Gmail->>PubSub: New email arrives → publish
+    PubSub->>Webhook: POST (push subscription)
+    Webhook->>Webhook: Decode { emailAddress, historyId }
+    Webhook->>Pusher: trigger("private-{hash}", "history-changed")
+    Pusher->>RS: Event received on private channel
+    RS->>RQ: invalidateQueries(["threads"])
+    RQ->>RQ: Refetch thread list (UI updates)
+```
+
+### Polling Fallback
+
+```mermaid
+sequenceDiagram
+    participant Shell as AppShell
+    participant RQ as React Query
+    participant SA as Server Action
+    participant Gmail as Gmail API
+    
+    Note over Shell: Every 5 minutes (fallback)
+    Shell->>RQ: useHistoryPoll("INBOX", 5min)
+    RQ->>SA: checkHistoryAction(historyId)
+    SA->>Gmail: users.history.list({ startHistoryId })
+    Gmail-->>SA: { history[], latestHistoryId }
+    alt hasUpdates
+        SA-->>RQ: { hasUpdates: true, latestHistoryId }
+        RQ->>RQ: invalidateQueries(["threads"])
+    else no updates
+        SA-->>RQ: { hasUpdates: false, latestHistoryId }
+    end
+```
+
+## 5. AI Tool Execution Flow
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Chat as CopilotSidebar
+    participant Runtime as CopilotKit Runtime
+    participant LLM as OpenRouter LLM
+    participant Tool as Agent Tool
+    participant Store as Zustand Store
+    participant UI as React UI
+    participant SA as Server Action
+    participant Gmail as Gmail API
+    
+    User->>Chat: "Show me unread emails from Alice"
+    Chat->>Runtime: POST /api/copilotkit
+    Runtime->>Runtime: Compose system prompt + context
+    Runtime->>LLM: streamText(model, messages, tools)
+    LLM-->>Runtime: Tool call: set_filters(sender: "alice", readStatus: "unread")
+    Runtime->>Tool: Execute frontend tool
+    Tool->>Store: useGmailStore.setFilters(...)
+    Store-->>UI: Re-render ThreadList with filter
+    UI-->>Runtime: Execution result
+    Runtime->>LLM: Continue with result
+    LLM-->>Runtime: Response: "Done! Showing unread emails from Alice."
+    Runtime-->>Chat: Stream response to user
+```

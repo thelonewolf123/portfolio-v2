@@ -1,0 +1,42 @@
+---
+sidebar_position: 2
+---
+
+# Configuration
+
+## Environment Variables
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `AUTH_GOOGLE_ID` | ✅ | — | Google OAuth client ID |
+| `AUTH_GOOGLE_SECRET` | ✅ | — | Google OAuth client secret |
+| `AUTH_SECRET` | ✅ | — | NextAuth encryption secret |
+| `OPENROUTER_API_KEY` | ✅ | — | OpenRouter API key for LLM access |
+| `LLM_MODEL` | ❌ | `minimax/minimax-m3` | AI model override (any OpenRouter model) |
+| `NEXTAUTH_URL` | ❌ | `http://localhost:3000` | Application URL |
+
+```bash
+# .env.local example
+AUTH_GOOGLE_ID=your-client-id.apps.googleusercontent.com
+AUTH_GOOGLE_SECRET=your-client-secret
+AUTH_SECRET=$(openssl rand -base64 32)
+NEXTAUTH_URL=http://localhost:3000
+OPENROUTER_API_KEY=sk-or-v1-your-key
+LLM_MODEL=minimax/minimax-m3
+```
+
+## Gmail API Setup
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a project and enable the **Gmail API**
+3. Go to **APIs & Services → Credentials**
+4. Create an **OAuth 2.0 Client ID** (Web application)
+5. Add `http://localhost:3000/api/auth/callback/google` as authorized redirect URI
+6. Copy the **Client ID** and **Client Secret**
+
+## Feature toggles
+
+The application has no explicit feature flags — features are enabled by the presence of configured tools. To disable a feature:
+
+1. Remove the tool registration from `AiTools.tsx`
+2. Remove or hide the corresponding UI component

@@ -1,0 +1,89 @@
+---
+sidebar_position: 1
+---
+
+# Authentication Architecture
+
+The auth system has security at every layer — from OAuth consent to server action guards.
+
+## Security Layers
+
+```mermaid
+graph TB
+    subgraph Layer1["Layer 1: OAuth Consent"]
+        Scope["gmail.modify scope<br/>Limited to user's own mailbox"]
+        Consent["Google consent screen<br/>User explicitly approves"]
+    end
+    
+    subgraph Layer2["Layer 2: JWT Session"]
+        JWT["Encrypted JWT cookie<br/>Contains tokens + expiry"]
+        Refresh["Auto-refresh on expiry<br/>Rotates refresh tokens"]
+    end
+    
+    subgraph Layer3["Layer 3: Server Action Guard"]
+        Guard["requireAuth()<br/>getServerSession"]
+        Throw["Throws if invalid<br/>No fallback to client"]
+    end
+    
+    subgraph Layer4["Layer 4: API Route Guard"]
+        CopilotKit["CopilotKit runtime<br/>Server-side only"]
+        Extract["PDF extraction API<br/>Session-checked"]
+    end
+    
+    Scope --> Consent
+    Consent --> JWT
+    JWT --> Refresh
+    Refresh --> Guard
+    Guard --> Throw
+    Guard --> CopilotKit
+    Guard --> Extract
+```
+
+## Request Flow
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant NextJS as Next.js Server
+    participant SA as Server Action
+    participant Auth as requireAuth()
+    participant JWT as JWT Session
+    participant Gmail as Gmail API
+    
+    Browser->>NextJS: POST / (Server Action call)
+    NextJS->>SA: Execute server action
+    SA->>Auth: requireAuth()
+    Auth->>JWT: getServerSession(authOptions)
+    
+    alt Valid Session
+        JWT-->>Auth: { accessToken, refreshToken }
+        Auth-->>SA: Session approved
+        SA->>Gmail: Call Gmail API
+        Gmail-->>SA: Response
+        SA-->>Browser: Result
+    else No Session
+        JWT-->>Auth: null
+        Auth-->>SA: Throw "Unauthorized"
+        SA-->>Browser: Error response
+    end
+```
+
+## Security Principles
+
+| Principle | Implementation |
+|-----------|---------------|
+| **No client-side tokens** | Access tokens never reach the browser |
+| **Every call authenticated** | `requireAuth()` in every server action |
+| **Least privilege** | Only `gmail.modify` scope requested |
+| **Token rotation** | Refresh tokens rotated on each use |
+| **No persistent stores** | All state is session-bound |
+
+## Environment Variables
+
+| Variable | Sensitivity | Exposure |
+|----------|-------------|----------|
+| `AUTH_SECRET` | 🔴 High | Server only (encryption key) |
+| `AUTH_GOOGLE_ID` | 🟡 Medium | Server only |
+| `AUTH_GOOGLE_SECRET` | 🔴 High | Server only |
+| `OPENROUTER_API_KEY` | 🔴 High | Server only |
+| `LLM_MODEL` | 🟢 Low | Server only |

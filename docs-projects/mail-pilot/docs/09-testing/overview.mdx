@@ -1,0 +1,135 @@
+---
+sidebar_position: 1
+---
+
+# Testing
+
+Mail Pilot uses **Vitest** for unit and integration tests and **Playwright** for end-to-end tests. The testing strategy emphasizes deterministic, mock-isolated tests for the Gmail API layer and realistic E2E coverage for critical UI flows.
+
+## Quick Commands
+
+| Command | What it runs |
+|---------|-------------|
+| `npm test` | Vitest (unit + integration) — CI entry point |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run test:e2e` | Playwright (E2E) |
+| `npm run test:e2e:ui` | Playwright with UI inspector |
+
+## Test Structure
+
+```
+tests/
+├── e2e/
+│   └── inbox.spec.ts          # Playwright E2E tests
+├── helpers/
+│   ├── auth.ts                # Fake NextAuth session cookie
+│   ├── fixtures.ts            # Fake Gmail data generators
+│   └── gmail-mock.ts          # Re-exports createMockGmailClient from lib/
+├── lib/
+│   ├── gmail/
+│   │   ├── messages.test.ts   # parseMessage, get, modify, trash
+│   │   ├── mime.test.ts       # MIME message building
+│   │   ├── send.test.ts       # Send email
+│   │   └── threads.test.ts    # Thread list, get, trash
+│   └── stores/
+│       ├── approvalStore.test.ts  # Approval state machine
+│       └── gmailStore.test.ts     # Gmail store actions/setters
+└── setup.ts                  # Vitest global setup (mocks)
+```
+
+## Mock Gmail Client
+
+The real Gmail API is replaced with a **single canonical mock** at `lib/gmail/mock-client.ts`. This mock:
+
+- Maintains an in-memory `Map` of messages populated by fake data from `tests/helpers/fixtures.ts`
+- Implements the same `gmail_v1.Gmail` interface as the real client
+- Supports filtering, searching, pagination, label modification, trash, send, drafts, labels CRUD, and history
+
+### How It Is Used
+
+**In tests:** `tests/setup.ts` uses `vi.mock("@googleapis/gmail")` to replace the entire `gmail` module with `createMockGmailClient()`:
+
+```ts
+vi.mock("@googleapis/gmail", async () => {
+  const { createMockGmailClient } = await import("@/tests/helpers/gmail-mock")
+  const mockClient = createMockGmailClient()
+  return {
+    gmail: vi.fn(() => mockClient),
+    auth: { OAuth2: vi.fn() },
+  }
+})
+```
+
+`tests/helpers/gmail-mock.ts` is a thin re-export that delegates to `lib/gmail/mock-client.ts` — the single source of truth.
+
+**In development:** When the `MOCK_GMAIL=true` environment variable is set, `lib/gmail/auth.ts` dynamically imports the same mock client instead of creating a real Gmail API client:
+
+```ts
+if (process.env.MOCK_GMAIL === "true") {
+  const { createMockGmailClient } = await import("./mock-client")
+  return createMockGmailClient()
+}
+```
+
+This is how Playwright E2E tests run — the `playwright.config.ts` starts the dev server with `MOCK_GMAIL=true`, so all Gmail API calls are served from the in-memory mock.
+
+### Test Fixtures
+
+`tests/helpers/fixtures.ts` provides reusable factories:
+
+- **`createFakeRawMessage(id, threadId, overrides)`** — builds a `gmail_v1.Schema$Message` with headers, body, labels, and snippet
+- **`createFakeMessagesListResponse(messages)`** — wraps messages into a `ListMessagesResponse`
+- **`FAKE_THREADS_DATA`** — an array of 5 realistic thread definitions (meeting confirmation, invoice, welcome email, project update, order confirmation) used to seed the mock store
+
+### Why a Single Mock
+
+Having one mock shared between unit tests and the dev server ensures:
+
+- **Behavioral consistency** — the mock behaves the same way regardless of how it's invoked
+- **One place to update** — when the Gmail API surface changes, only `lib/gmail/mock-client.ts` needs updating
+- **Development without credentials** — set `MOCK_GMAIL=true` and run the full app offline
+
+## Unit Test Patterns
+
+Gmail-layer tests follow this pattern:
+
+```ts
+import { describe, it, expect } from "vitest"
+import { gmail } from "@googleapis/gmail"
+
+// The mock is already injected by tests/setup.ts
+const client = gmail()
+
+it("returns parsed messages", async () => {
+  const res = await client.users.messages.get({ userId: "me", id: "thread-1" })
+  expect(res.data.snippet).toContain("meeting")
+})
+```
+
+State store tests test Zustand stores directly:
+
+```ts
+import { describe, it, expect } from "vitest"
+import { useApprovalStore } from "@/lib/stores/approvalStore"
+
+it("transitions from waiting to approved", () => {
+  useApprovalStore.getState().sendForApproval({ ... })
+  useApprovalStore.getState().approve()
+  expect(useApprovalStore.getState().status).toBe("approved")
+})
+```
+
+## E2E Tests
+
+Playwright tests run with `MOCK_GMAIL=true` so no real Gmail credentials are needed. The test helper at `tests/helpers/auth.ts` creates a fake NextAuth session cookie to bypass the sign-in screen.
+
+The test file `tests/e2e/inbox.spec.ts` covers:
+
+1. **Inbox loading** — threads are rendered from mock data
+2. **Thread metadata** — subject, snippet, and sender display correctly
+3. **Thread detail** — navigating into a thread shows its messages
+4. **Unread indicators** — messages with `UNREAD` label show as unread
+5. **AI filters** — AI-driven filter commands (`tagged @ai`)
+6. **AI search** — AI-driven search commands (`tagged @ai`, 120s timeout)
+
+AI-tagged tests have longer timeouts due to LLM latency. For deterministic E2E coverage, prefer testing UI tool invocations directly rather than through the AI agent.

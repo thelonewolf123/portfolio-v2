@@ -1,0 +1,69 @@
+---
+sidebar_position: 2
+---
+
+# Search, Filter & Delete
+
+Search your inbox with natural language, filter results, and bulk-delete with human-in-the-loop approval.
+
+## Demo: Search & Filter
+
+<div class="video-container">
+  <video controls width="100%">
+    <source src={require('@site/static/demo/search and filter-compressed.mp4').default} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+Filter emails by sender, subject, keyword, date range, and read status — all through natural language.
+
+## Demo: Search & Delete
+
+<div class="video-container">
+  <video controls width="100%">
+    <source src={require('@site/static/demo/search and delete-compressed.mp4').default} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+Search for specific emails and bulk-delete with approval confirmation.
+
+## Architecture Involved
+
+| Component | File | Role |
+|-----------|------|------|
+| `set_filters` tool | `agent/tools/ui/filter.ts` | Applies filters (sender, subject, keyword, date, read status) |
+| `search_threads` tool | `agent/backend-tools/search-threads.ts` | Server-side Gmail search |
+| `select_threads` tool | `agent/tools/ui/selection.ts` | Multi-select threads for batch ops |
+| `delete_selected_threads` tool | `agent/tools/approval/delete.ts` | Approval workflow for deletion |
+| `ThreadFilterBar` | `components/mail/ThreadFilterBar/index.tsx` | UI filter controls |
+| `ThreadSelectionBar` | `components/mail/ThreadSelectionBar/index.tsx` | Selection action bar |
+| `useGmailStore` | `lib/stores/gmailStore.ts` | Filter state management |
+| `useUiStore` | `lib/stores/uiStore.ts` | Selection state management |
+
+## Filter Query Compilation
+
+When the AI sets filters, Zustand compiles them into a Gmail query:
+
+```typescript
+// User: "Show unread emails from Bob about Q4 planning"
+// AI calls: set_filters({ sender: "Bob", keyword: "Q4 planning", readStatus: "unread" })
+
+// Compiled Gmail query:
+// "from:Bob Q4 planning is:unread"
+```
+
+## Delete Flow
+
+```
+User: "Find all emails from newsletter@spam.com and delete them"
+  → AI calls search_threads({ sender: "newsletter@spam.com" })
+  → Returns matching threads
+  → AI calls select_threads(threadIds)
+  → UI shows threads selected with checkboxes
+  → AI calls delete_selected_threads(ids)
+  → ApprovalDialog shows thread previews
+  → User reviews and approves
+  → trashThreadsAction() → Gmail API
+  → Thread list refreshes
+```

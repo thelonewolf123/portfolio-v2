@@ -23,15 +23,22 @@ export function HeroSection() {
               <div className="h-1 w-24 bg-linear-to-r from-blue-500 via-purple-500 to-transparent mx-auto md:mx-0 rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
-              Full Stack Engineer
+              Full Stack & AI Engineer
             </p>
             <div className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 border border-green-500/20">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               Open to Work
             </div>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
-              Built and scaled WatchWithMe to 7,000+ users with paying
-              customers. Currently building{" "}
+              Built three production-grade systems with full technical
+              documentation:{" "}
+              <a
+                href="/docs/mail-pilot/"
+                className="underline decoration-cyan-500/50 hover:decoration-cyan-500 transition-all"
+              >
+                Mail Pilot
+              </a>{" "}
+              (AI-native email client),{" "}
               <a
                 href="/docs/aegis/"
                 rel="noopener noreferrer"
@@ -39,16 +46,40 @@ export function HeroSection() {
               >
                 Aegis
               </a>{" "}
-              (AI debugging system) and{" "}
+              (AI-powered debugging), and{" "}
               <a
                 href="/docs/stardust/"
                 className="underline decoration-purple-500/50 hover:decoration-purple-500 transition-all"
               >
                 Stardust
               </a>{" "}
-              (container deployment platform). Strong in real-time systems,
-              observability, and distributed architecture.
+              (container deployment on AWS Spot). Strong in AI tooling,
+              real-time systems, observability, and distributed architecture.
             </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+            <a
+              href="/docs/mail-pilot/"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 text-xs font-medium border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              Mail Pilot Docs
+            </a>
+            <a
+              href="/docs/aegis/"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+              Aegis Docs
+            </a>
+            <a
+              href="/docs/stardust/"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+              Stardust Docs
+            </a>
           </div>
 
           {/* Contact Links */}

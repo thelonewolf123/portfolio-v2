@@ -1,0 +1,49 @@
+---
+sidebar_position: 1
+---
+
+# Write & Send Email
+
+Compose and send emails using natural language — the AI fills the form, and you approve before sending.
+
+## Demo Video
+
+<div class="video-container">
+  <video controls width="100%">
+    <source src={require('@site/static/demo/write and send email-compressed.mp4').default} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+## What You'll See
+
+1. **AI fills compose form** — user tells the AI "Write an email to..." and the `fill_compose_form` tool populates To, Cc, Subject, and Body fields
+2. **Approval dialog** — when the user clicks Send, the `send_email` tool triggers the `ApprovalDialog` showing a preview
+3. **Approve or reject** — user reviews the email and clicks Approve, or Reject to cancel
+4. **Email sent** — the `sendMessageAction` server action executes, and the thread list refreshes
+
+## Architecture Involved
+
+| Component | File | Role |
+|-----------|------|------|
+| `fill_compose_form` tool | `agent/tools/gmail/draft.ts` | Pre-fills compose form fields |
+| `send_email` tool | `agent/tools/approval/request.ts` | Triggers approval workflow |
+| `ApprovalDialog` | `components/approval/ApprovalDialog.tsx` | Shows email preview for confirmation |
+| `sendMessageAction` | `lib/actions/gmail.ts` | Server action that sends via Gmail API |
+| `ComposeForm` | `components/mail/ComposeForm/index.tsx` | TipTap rich-text compose form |
+| `useComposeStore` | `lib/stores/composeStore.ts` | Manages compose draft state |
+
+## Data Flow
+
+```
+User: "Write an email to alice@example.com about the project update"
+  → AI calls fill_compose_form({ to, subject, body })
+  → ComposeForm re-renders with filled fields
+  → User edits and clicks Send
+  → send_email tool → approvalStore.requestApproval()
+  → ApprovalDialog shows preview
+  → User approves
+  → sendMessageAction() → Gmail API
+  → React Query invalidates thread cache
+  → ThreadList refreshes with new sent email
+```

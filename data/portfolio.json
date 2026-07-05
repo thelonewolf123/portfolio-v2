@@ -128,6 +128,74 @@
         "subtitle": "Production-grade systems built from the ground up, with full technical documentation",
         "projects": [
             {
+                "title": "Mail Pilot",
+                "tagline": "AI-native email client",
+                "date": "January 2026 – Present",
+                "description": "An AI-native email client where you control everything through natural language. The AI assistant navigates views, filters threads, composes replies, searches your inbox, and manages labels, while a human-in-the-loop approval system guards every action.",
+                "features": [
+                    "AI-powered email management — navigate, filter, compose, reply, search, and delete through natural language",
+                    "Human-in-the-loop approval — confirm or reject every send/delete with a modal dialog",
+                    "Tool-based AI architecture with typed, validated tools for deterministic behavior",
+                    "Rich email UI with virtualized thread lists, TipTap rich-text editor, and Gmail label management",
+                    "File reasoning — upload PDFs, text files, and CSVs; the AI reads and reasons about their content",
+                    "Resume-to-job matching — upload a résumé and job listings, the AI ranks and drafts personalized applications"
+                ],
+                "techStack": [
+                    "Next.js",
+                    "TypeScript",
+                    "CopilotKit",
+                    "Zustand",
+                    "TanStack Query",
+                    "TipTap",
+                    "Gmail API",
+                    "NextAuth",
+                    "Tailwind CSS",
+                    "shadcn/ui"
+                ],
+                "stats": "9 doc categories • 25+ architecture docs • Live demo",
+                "liveUrl": "https://mail-pilot-psi.vercel.app",
+                "docsUrl": "/docs/mail-pilot/",
+                "docSections": [
+                    {
+                        "label": "Architecture",
+                        "href": "/docs/mail-pilot/docs/architecture/system-overview"
+                    },
+                    {
+                        "label": "AI Agent System",
+                        "href": "/docs/mail-pilot/docs/ai-agent/tool-architecture"
+                    },
+                    {
+                        "label": "State Management",
+                        "href": "/docs/mail-pilot/docs/state-management/zustand-stores"
+                    },
+                    {
+                        "label": "Integrations",
+                        "href": "/docs/mail-pilot/docs/integrations/gmail-api"
+                    },
+                    {
+                        "label": "Security & HITL",
+                        "href": "/docs/mail-pilot/docs/security/auth-architecture"
+                    },
+                    {
+                        "label": "Demo Videos",
+                        "href": "/docs/mail-pilot/docs/demo/inbox-management"
+                    },
+                    {
+                        "label": "Extensibility",
+                        "href": "/docs/mail-pilot/docs/extensibility/adding-tools"
+                    },
+                    {
+                        "label": "Engineering Decisions",
+                        "href": "/docs/mail-pilot/docs/engineering-decisions/tool-based-architecture"
+                    },
+                    {
+                        "label": "Testing",
+                        "href": "/docs/mail-pilot/docs/testing/overview"
+                    }
+                ],
+                "imageUrl": "/mail-pilot.webp"
+            },
+            {
                 "title": "Aegis",
                 "tagline": "AI-powered production debugging system",
                 "date": "March 2026 – Present",
@@ -151,7 +219,6 @@
                     "Alpine.js"
                 ],
                 "stats": "13 architecture docs • 12 design patterns • 4 security layers",
-                "githubUrl": "https://github.com/thelonewolf123/aegis",
                 "docsUrl": "/docs/aegis/",
                 "docSections": [
                     {

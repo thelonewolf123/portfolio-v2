@@ -1,0 +1,49 @@
+---
+sidebar_position: 4
+---
+
+# AI Model Choice
+
+The default AI model is **Minimax M3** accessed via **OpenRouter**.
+
+## Why Minimax M3?
+
+| Criterion | Rating | Notes |
+|-----------|--------|-------|
+| **Tool-calling accuracy** | ⭐⭐⭐⭐ | Reliable structured output for tool calls |
+| **Cost** | ⭐⭐⭐⭐⭐ | ~$0.15/M tokens (very cheap) |
+| **Speed** | ⭐⭐⭐⭐ | Fast inference |
+| **Context window** | ⭐⭐⭐⭐ | 128K tokens |
+| **Availability** | ⭐⭐⭐⭐ | Reliable via OpenRouter |
+
+## Why OpenRouter?
+
+OpenRouter provides a **unified API** for dozens of LLMs, making model swapping trivial:
+
+```bash
+# Change model by editing ONE env variable:
+LLM_MODEL=anthropic/claude-sonnet-4-20250514
+
+# Or use any other OpenRouter model:
+LLM_MODEL=openai/gpt-4o-2024-11-20
+LLM_MODEL=google/gemini-2.0-flash-001
+LLM_MODEL=meta-llama/llama-3-70b-instruct
+```
+
+## Cost Comparison
+
+| Model | Cost per 1M input tokens | Cost per 1M output tokens |
+|-------|--------------------------|---------------------------|
+| Minimax M3 | $0.15 | $0.60 |
+| GPT-4o | $2.50 | $10.00 |
+| Claude Sonnet 4 | $3.00 | $15.00 |
+| Gemini 2.0 Flash | $0.10 | $0.40 |
+
+## Model-Agnostic Architecture
+
+The tool-based architecture means the system works identically regardless of the underlying model. As long as the LLM can:
+
+1. Read the structured context (`useCopilotReadable`)
+2. Output tool calls in the expected format
+
+...the application behaves the same way. This is a key benefit of the tool-based approach — the model is a **pluggable component**.
