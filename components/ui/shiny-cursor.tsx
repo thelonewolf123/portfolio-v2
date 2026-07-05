@@ -1,18 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from "framer-motion";
 
 export const ShinyCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+  const reduceMotion = useReducedMotion();
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
     const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
     if (reduceMotion || !hasFinePointer) return;
     setEnabled(true);
@@ -27,7 +25,9 @@ export const ShinyCursor = () => {
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
-  }, [cursorX, cursorY]);
+  }, [reduceMotion, cursorX, cursorY]);
+
+  const background = useMotionTemplate`radial-gradient(300px circle at ${cursorX}px ${cursorY}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
 
   if (!enabled) return null;
 
@@ -35,9 +35,7 @@ export const ShinyCursor = () => {
     <motion.div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-30 transition duration-300"
-      style={{
-        background: useMotionTemplate`radial-gradient(300px circle at ${cursorX}px ${cursorY}px, rgba(29, 78, 216, 0.15), transparent 80%)`
-      }}
+      style={{ background }}
     />
   );
 };
