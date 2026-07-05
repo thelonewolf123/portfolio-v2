@@ -1,30 +1,37 @@
 import { access, readdir, stat } from "fs/promises";
 import path from "path";
 
-interface DocBuild {
-  baseUrl: string;
-  buildDir: string;
-  exclude: string[];
-}
+const DOCS_PROJECTS_DIR = path.join(process.cwd(), "docs-projects");
 
-const DOC_BUILDS: DocBuild[] = [
-  {
-    baseUrl: "/docs/aegis",
-    buildDir: path.join(process.cwd(), "aegis.docs", "build"),
-    exclude: ["markdown-page", "index.html", "404.html", "sitemap.xml"]
-  },
-  {
-    baseUrl: "/docs/stardust",
-    buildDir: path.join(process.cwd(), "stardust.docs", "build"),
-    exclude: ["blog", "index.html", "404.html", "sitemap.xml"]
-  }
-];
+const COMMON_EXCLUDE = new Set(["index.html", "404.html", "sitemap.xml"]);
 
 export interface DocPage {
   url: string;
   lastModified: Date;
   changeFrequency: "monthly";
   priority: number;
+}
+
+async function discoverDocProjects(): Promise<
+  Array<{ baseUrl: string; buildDir: string }>
+> {
+  const projects: Array<{ baseUrl: string; buildDir: string }> = [];
+  try {
+    const entries = await readdir(DOCS_PROJECTS_DIR, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const buildDir = path.join(DOCS_PROJECTS_DIR, entry.name, "build");
+      try {
+        await access(buildDir);
+        projects.push({ baseUrl: `/docs/${entry.name}`, buildDir });
+      } catch {
+        // No build dir yet — skip
+      }
+    }
+  } catch {
+    // docs-projects dir doesn't exist; empty list
+  }
+  return projects;
 }
 
 async function walkIndexHtml(
@@ -54,27 +61,19 @@ async function walkIndexHtml(
 }
 
 export async function getDocPages(): Promise<DocPage[]> {
+  const projects = await discoverDocProjects();
   const pages: DocPage[] = [];
-  for (const build of DOC_BUILDS) {
-    try {
-      await access(build.buildDir);
-    } catch {
-      continue;
-    }
-
+  for (const project of projects) {
     for (const sub of ["docs", "blog"]) {
       const found: Array<{ relPath: string; mtime: Date }> = [];
-      await walkIndexHtml(build.buildDir, sub, found);
+      await walkIndexHtml(project.buildDir, sub, found);
       for (const { relPath, mtime } of found) {
         const topSegment = relPath.split(path.sep)[0];
-        if (
-          build.exclude.includes(relPath) ||
-          build.exclude.includes(topSegment)
-        ) {
+        if (COMMON_EXCLUDE.has(relPath) || COMMON_EXCLUDE.has(topSegment)) {
           continue;
         }
         pages.push({
-          url: `${build.baseUrl}/${relPath}/`,
+          url: `${project.baseUrl}/${relPath}/`,
           lastModified: mtime,
           changeFrequency: "monthly",
           priority: 0.5

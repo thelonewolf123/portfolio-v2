@@ -49,13 +49,17 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
 ### Production build
 
-The build script also builds two Docusaurus sub-projects (Aegis docs and Stardust docs) which are served at `/docs/aegis/` and `/docs/stardust/`. The first build will take a few minutes.
+The build script also builds every Docusaurus sub-project under `docs-projects/`, which are served at `/docs/<project>/`. The first build will take a few minutes.
 
 ```bash
 npm run build
 ```
 
 If you do not need the Docusaurus sites locally, you can run `next build` directly.
+
+### Adding a new Docusaurus project
+
+Drop a new project into `docs-projects/<name>/` with `baseUrl: "/docs/<name>/"` in its `docusaurus.config.ts`, then run `npm run build:docs`. It will be auto-routed, auto-included in the sitemap, and ready to serve — no portfolio code changes required.
 
 ## 📁 Project Structure
 
@@ -80,8 +84,10 @@ If you do not need the Docusaurus sites locally, you can run `next build` direct
 │   └── portfolio.json         # Portfolio content (experience, projects, skills)
 ├── hooks/                     # Custom React hooks
 ├── lib/                       # Utility functions
-├── aegis.docs/                # Docusaurus sub-project for Aegis
-├── stardust.docs/             # Docusaurus sub-project for Stardust
+├── scripts/                    # Build helpers (favicon generation, doc builds)
+├── docs-projects/             # Docusaurus sub-projects (auto-discovered)
+│   ├── aegis/                 # Served at /docs/aegis/
+│   └── stardust/              # Served at /docs/stardust/
 └── public/                    # Static assets
 ```
 
@@ -113,7 +119,7 @@ Your content here...
 | Command              | Description                                                    |
 | -------------------- | -------------------------------------------------------------- |
 | `npm run dev`        | Start development server                                       |
-| `npm run build:docs` | Build both Docusaurus sub-projects                            |
+| `npm run build:docs` | Build every Docusaurus sub-project under `docs-projects/`     |
 | `npm run build`      | Build docs then build the Next.js app for production          |
 | `npm run start`      | Start production server                                        |
 | `npm run lint`       | Run ESLint                                                     |

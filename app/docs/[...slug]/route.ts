@@ -1,11 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import { access, readFile, stat } from "fs/promises";
+import { access, readFile, readdir, stat } from "fs/promises";
 import path from "path";
 
-const BUILD_DIRS: Record<string, string> = {
-  aegis: path.join(process.cwd(), "aegis.docs", "build"),
-  stardust: path.join(process.cwd(), "stardust.docs", "build")
-};
+const DOCS_PROJECTS_DIR = path.join(process.cwd(), "docs-projects");
+
+async function loadProjects(): Promise<Map<string, string>> {
+  const projects = new Map<string, string>();
+  try {
+    const entries = await readdir(DOCS_PROJECTS_DIR, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const buildDir = path.join(DOCS_PROJECTS_DIR, entry.name, "build");
+      try {
+        await access(buildDir);
+        projects.set(entry.name, buildDir);
+      } catch {
+        // No build dir yet — skip
+      }
+    }
+  } catch {
+    // docs-projects dir doesn't exist; empty project set
+  }
+  return projects;
+}
+
+const PROJECTS = await loadProjects();
 
 const MIME_TYPES: Record<string, string> = {
   ".html": "text/html",
@@ -53,7 +72,7 @@ export async function GET(
   }
 
   const project = slug[0];
-  const buildDir = BUILD_DIRS[project];
+  const buildDir = PROJECTS.get(project);
 
   if (!buildDir) {
     return new NextResponse("Not Found", { status: 404 });
