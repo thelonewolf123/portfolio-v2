@@ -35,8 +35,9 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Services',
-      link: {type: 'doc', id: 'services/scheduler'},
+      link: {type: 'doc', id: 'services/overview'},
       items: [
+        'services/scheduler',
         'services/cron',
         'services/logger',
         'services/docker-proxy',
