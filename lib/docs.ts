@@ -64,7 +64,8 @@ export async function getDocPages(): Promise<DocPage[]> {
   const projects = await discoverDocProjects();
   const pages: DocPage[] = [];
   for (const project of projects) {
-    for (const sub of ["docs", "blog"]) {
+    // Only crawl "docs" — blog posts are served via Next.js at /blog/
+    for (const sub of ["docs"]) {
       const found: Array<{ relPath: string; mtime: Date }> = [];
       await walkIndexHtml(project.buildDir, sub, found);
       for (const { relPath, mtime } of found) {

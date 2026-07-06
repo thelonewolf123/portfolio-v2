@@ -5,6 +5,8 @@ import { getDocPages } from "@/lib/docs";
 
 const SITE_URL = "https://harishkumar.info";
 
+export const revalidate = false;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, docPages] = await Promise.all([
     getAllBlogPosts(),
