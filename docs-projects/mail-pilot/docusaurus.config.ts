@@ -55,7 +55,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/mail-pilot-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true
     },

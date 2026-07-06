@@ -7,7 +7,19 @@ export const metadata = {
   title: "Blog - Harish Kumar",
   description:
     "Articles about real-time systems, distributed architecture, observability, and building scalable applications.",
-  alternates: { canonical: "/blog/" }
+  alternates: { canonical: "/blog/" },
+  openGraph: {
+    title: "Blog - Harish Kumar",
+    description:
+      "Articles about real-time systems, distributed architecture, observability, and building scalable applications.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Harish Kumar Blog" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog - Harish Kumar",
+    description:
+      "Articles about real-time systems, distributed architecture, observability, and building scalable applications."
+  }
 };
 
 export default async function BlogPage() {

@@ -11,6 +11,7 @@ export function personJsonLd() {
       "https://github.com/thelonewolf123",
       "https://linkedin.com/in/harishkumark025"
     ],
+    image: "https://harishkumar.info/og-image.png",
     knowsAbout: [
       "React",
       "Next.js",

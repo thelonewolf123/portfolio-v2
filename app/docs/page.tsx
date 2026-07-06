@@ -7,7 +7,19 @@ export const metadata = {
   title: "Documentation - Harish Kumar",
   description:
     "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details.",
-  alternates: { canonical: "/docs/" }
+  alternates: { canonical: "/docs/" },
+  openGraph: {
+    title: "Documentation - Harish Kumar",
+    description:
+      "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Project Documentation" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Documentation - Harish Kumar",
+    description:
+      "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details."
+  }
 };
 
 const docProjects = [

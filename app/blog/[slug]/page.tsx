@@ -1,6 +1,7 @@
 import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/blog";
 import { Navigation } from "@/components/internal/navigation";
 import { Calendar, User, Tag } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReactMarkdown } from "@/components/internal/markdown-renderer";
@@ -25,11 +26,27 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     return {
       title: `${post.title} - Harish Kumar`,
       description: post.description,
-      alternates: { canonical: `/blog/${post.slug}/` }
+      alternates: { canonical: `/blog/${post.slug}/` },
+      openGraph: {
+        title: post.title,
+        description: post.description,
+        type: "article",
+        publishedTime: post.date,
+        authors: [post.author],
+        images: [{ url: "/og-image.png", width: 1200, height: 630, alt: post.title }]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.description,
+        images: ["/og-image.png"]
+      }
     };
   } catch {
     return {
-      title: "Post Not Found"
+      title: "Post Not Found",
+      description: "The requested blog post could not be found.",
+      robots: { index: false }
     };
   }
 }
@@ -97,11 +114,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Featured Image */}
           {post.image && (
-            <div className="mb-12 rounded-lg overflow-hidden bg-muted aspect-video">
-              <img
+            <div className="mb-12 rounded-lg overflow-hidden bg-muted aspect-video relative">
+              <Image
                 src={post.image || "/placeholder.svg"}
                 alt={post.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
               />
             </div>
           )}

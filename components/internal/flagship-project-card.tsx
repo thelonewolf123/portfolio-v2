@@ -101,6 +101,7 @@ export function FlagshipProjectCard({
           alt={title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
         <div className="absolute bottom-4 left-6 right-6">

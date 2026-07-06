@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Tag, ArrowRight } from "lucide-react";
 import type { BlogPost } from "@/lib/blog";
@@ -13,11 +14,13 @@ export function BlogCard({ post }: BlogCardProps) {
     <Link href={`/blog/${post.slug}`}>
       <article className="group border border-border rounded-lg overflow-hidden hover:border-accent transition-colors bg-card/50">
         {post.image && (
-          <div className="aspect-video overflow-hidden bg-muted">
-            <img
+          <div className="aspect-video overflow-hidden bg-muted relative">
+            <Image
               src={post.image || "/placeholder.svg"}
               alt={post.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         )}
