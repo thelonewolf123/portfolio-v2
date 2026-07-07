@@ -1,0 +1,249 @@
+\documentclass[letterpaper,11pt]{article}
+
+% --- Packages ---
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[dvipsnames]{xcolor} % Upgraded for better color support
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+
+% --- Typography / Font ---
+% Using Helvetica for a clean, highly readable, modern sans-serif look
+\usepackage[default]{carlito}\renewcommand{\familydefault}{\sfdefault}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+% --- Colors ---
+% Define a professional blue color for headings
+\definecolor{PrimaryBlue}{RGB}{20, 90, 150}
+\definecolor{DarkGray}{RGB}{50, 50, 50}
+
+% --- Page styling ---
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% --- Sections formatting ---
+% Applied PrimaryBlue to the heading text and the rule below it
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\color{PrimaryBlue}
+}{}{0em}{}[\color{PrimaryBlue}\titlerule \vspace{-5pt}]
+
+% --- Custom commands ---
+\newcommand{\resumeItem}[1]{
+  \item\small{\color{DarkGray}
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\color{black}#1} & \color{PrimaryBlue}#2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small\textbf{#1} & \color{PrimaryBlue}#2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape \color{PrimaryBlue} Harish Kumar K} \\ \vspace{4pt}
+    \small \textbf{Full Stack \& AI Engineer | AI-native Applications | Platform Engineering} $|$ 5+ Years Experience \\ \vspace{6pt}
+    \small \color{DarkGray}
+    \faMapMarker* Vellore, India \quad
+    \faPhone* +91 8778257327 \quad
+    \faEnvelope \hspace{1} \href{mailto:harishkumar.vellore@gmail.com}{harishkumar.vellore@gmail.com} \\ \vspace{3pt}
+    \faGlobe \hspace{4px} \href{https://harishkumar.info}{harishkumar.info} \quad
+    \faRss \hspace{4px} \href{https://harishkumar.info/blog}{Blog} \quad
+    \faLinkedin \hspace{4px} \href{https://linkedin.com/in/harishkumark025}{linkedin.com/in/harishkumark025} \quad
+    \faGithub \hspace{4px} \href{https://github.com/thelonewolf123}{github.com/thelonewolf123}
+\end{center}
+\vspace{4pt}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\small{\color{DarkGray}Full Stack \& AI Engineer with 5+ years of experience building production-grade AI systems, real-time applications, and distributed infrastructure. Strong expertise in \textbf{\color{black}LLM-powered tooling, observability, and systems engineering} — building products that combine AI with solid engineering. \textbf{\color{black}67+ pages of technical documentation} and \textbf{\color{black}12 published articles} on AI systems, real-time infrastructure, and distributed architecture.
+
+Built three production-grade systems: \textbf{\color{black}Mail Pilot} (AI-native email client), \textbf{\color{black}Aegis} (AI-powered production debugging), and \textbf{\color{black}Stardust} (container platform on AWS Spot). Scaled a real-time platform to \textbf{\color{black}7,000+ users} with paying customers. Delivered measurable impact: \textbf{\color{black}150\% booking growth, 15min $\rightarrow$ 5s latency reduction, 55\% cost optimization}. Invited speaker at Chennai Web Conf (2025).}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {PickYourTrail}{11/2024 - Present}
+      {Software Developer (SDE II)}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{Migrated React Native \textbf{\color{black}0.76 $\rightarrow$ 0.82}, improving \textbf{\color{black}performance and stability}.}
+        \resumeItem{Revamped \textbf{\color{black}hotel search and booking flow}, resulting in a \textbf{\color{black}150\% increase in bookings}.}
+        \resumeItem{Built \textbf{\color{black}cancellation \& reschedule policy module} (core business workflow).}
+        \resumeItem{Automated \textbf{\color{black}GST invoice retrieval from Indigo flights} (\textbf{\color{black}100--400} daily bookings).}
+      \resumeItemListEnd
+
+      \vspace{2pt}
+
+    \resumeSubheading
+      {BahiKhata Inc}{11/2023 - 11/2024}
+      {Fullstack Developer}{Noida, India}
+      \resumeItemListStart
+        \resumeItem{Enabled \textbf{\color{black}offline and multi-session sync} for MSME transaction recording across devices without internet.}
+        \resumeItem{Developed \textbf{\color{black}SMS parsing} to automatically detect and record transactions from bank messages.}
+      \resumeItemListEnd
+
+      \vspace{2pt}
+
+    \resumeSubheading
+      {Klenty}{02/2023 - 11/2023}
+      {Full Stack Developer - Infra}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{Implemented \textbf{\color{black}Zipkin distributed tracing} for system-wide observability.}
+        \resumeItem{Built \textbf{\color{black}real-time mail tracking system} $\rightarrow$ reduced latency from \textbf{\color{black}15 min $\rightarrow$ 5 sec}.}
+        \resumeItem{Designed \textbf{\color{black}request ID attribution} for MongoDB queries enabling exact user-to-code-path tracing.}
+        \resumeItem{Built \textbf{\color{black}slow query detection pipeline} to identify and resolve performance bottlenecks.}
+      \resumeItemListEnd
+
+      \vspace{2pt}
+
+    \resumeSubheading
+      {Codedamn}{08/2022 - 02/2023}
+      {Full Stack Developer - L3}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Built \textbf{\color{black}DSA playground} for executing coding problems.}
+        \resumeItem{Implemented \textbf{\color{black}real-time collaborative coding mode} (multi-user editor).}
+        \resumeItem{Built \textbf{\color{black}autocomplete and IntelliSense system} for browser IDE.}
+        \resumeItem{Optimized container allocation leading to a \textbf{\color{black}55\% cost reduction}.}
+      \resumeItemListEnd
+
+      \vspace{2pt}
+
+    \resumeSubheading
+      {Facilio}{03/2021 - 07/2022}
+      {Member of Technical Staff}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{Built advanced \textbf{\color{black}pivot table system} with conditional formatting and script columns for cross-module analytics.}
+        \resumeItem{Designed \textbf{\color{black}custom computation engine} enabling spreadsheet-like dynamic analysis.}
+      \resumeItemListEnd
+
+      \vspace{2pt}
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\color{black}Mail Pilot $|$ \emph{\small AI-Native Email Client}}{\href{https://mail-pilot-psi.vercel.app}{\textbf{Live}} \quad \href{https://harishkumar.info/docs/mail-pilot/}{\textbf{Docs}}}
+          \resumeItemListStart
+            \resumeItem{Built \textbf{\color{black}AI-native email client} where users control everything through natural language.}
+            \resumeItem{Designed \textbf{\color{black}14 typed, Zod-validated AI tools} with a human-in-the-loop approval state machine for every email action.}
+            \resumeItem{Built \textbf{\color{black}file reasoning} (PDF, CSV, text) and \textbf{\color{black}resume-to-job matching} powered by AI.}
+            \resumeItem{Full technical documentation: \textbf{\color{black}25+ docs across 9 categories} covering architecture, AI agent system, and security.}
+          \resumeItemListEnd
+      \vspace{2pt}
+
+      \resumeProjectHeading
+          {\color{black}Aegis $|$ \emph{\small AI-Powered Production Debugging}}{\href{https://harishkumar.info/docs/aegis/}{\textbf{Docs}}}
+          \resumeItemListStart
+            \resumeItem{Built \textbf{\color{black}AI debugging system} that queries production databases, logs, and infrastructure via natural language.}
+            \resumeItem{Multi-source correlation across PostgreSQL, CloudWatch, and IP geolocation with \textbf{\color{black}real-time SSE streaming}.}
+            \resumeItem{Implemented \textbf{\color{black}5-layer defense-in-depth sandboxing}: Docker → iptables → NSJail → seccomp → read-only DB.}
+            \resumeItem{Built \textbf{\color{black}ComputeFlow}: agent writes JS on-the-fly for data processing instead of dumping rows into LLM context.}
+          \resumeItemListEnd
+      \vspace{2pt}
+
+      \resumeProjectHeading
+          {\color{black}Stardust.app $|$ \emph{\small Container Deployment Platform — 6 microservices · 27 doc pages}}{\href{https://github.com/thelonewolf123/stardust.app}{\textbf{GitHub}} \quad \href{https://harishkumar.info/docs/stardust/}{\textbf{Docs}}}
+          \resumeItemListStart
+            \resumeItem{Built \textbf{\color{black}container provisioning engine on AWS Spot} with on-demand fallback and container checkpointing for disaster recovery.}
+            \resumeItem{\textbf{\color{black}Real-time logs via SSE}, WebSocket SSH, and auto Docker builds triggered by git push.}
+            \resumeItem{IaC with Pulumi, \textbf{\color{black}6 microservices} with RabbitMQ async orchestration, and 27 architecture docs.}
+          \resumeItemListEnd
+      \vspace{2pt}
+
+      \resumeProjectHeading
+          {\color{black}WatchWithMe $|$ \emph{\small Real-time Watch Party Platform}}{\href{https://www.watchwithme.in}{\textbf{Live}}}
+          \resumeItemListStart
+            \resumeItem{Built custom \textbf{\color{black}P2P WebRTC library from scratch} (DHT routing, in-browser relays); migrated \textbf{\color{black}4,000+ users} to LiveKit SFU with zero-downtime.}
+            \resumeItem{Scaled to \textbf{\color{black}7,000+ users} with paying customers. Increased signup completion \textbf{\color{black}3x} through anonymous-first onboarding.}
+            \resumeItem{Integrated voice + video chat and solved cross-platform sync, latency, and drift challenges.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------ACHIEVEMENTS-----------
+\section{\hspace{4px} Achievements}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{\color{black}Invited Speaker} \quad $|$ \quad \emph{\small Chennai Web Conf}}{Dec 2025}
+        \resumeItemListStart
+          \resumeItem{\textbf{\color{black}Talk:} \textit{“Artemis: Personal AI OS”} — an AI productivity system integrating task management, note-taking, reminders, Perplexity-powered research, and voice interaction.}
+          \resumeItem{Presented to 100+ engineers on building AI-native applications and personal AI systems.}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{\color{DarkGray}
+     \textbf{\color{black}Languages}{: TypeScript, JavaScript, Python} \\
+     \textbf{\color{black}Frontend}{: React, React Native, Next.js, Tailwindcss, Shadcn} \\
+     \textbf{\color{black}Backend}{: Node.js, Python, GraphQL, Express, FastAPI} \\
+     \textbf{\color{black}Databases}{: PostgreSQL, MongoDB, Redis, MySQL} \\
+     \textbf{\color{black}Gen AI \& LLM}{: LangGraph, CopilotKit, OpenRouter, n8n, RAG Pipelines}\\
+     \textbf{\color{black}Cloud \& DevOps}{: AWS, Serverless, Docker, Pulumi} \\
+     \textbf{\color{black}Core Strengths}{: Distributed Systems, Real-time Systems (WebSockets, Collaboration), Observability \& Debugging, AI-powered Tools}
+    }}
+ \end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Thanthai Periyar Government Institute of Technology}{Vellore, India}
+      {B.E Electronics and Communication Engineering}{2017 -- 2021}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
