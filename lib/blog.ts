@@ -33,16 +33,24 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
   const filePath = path.join(blogDir, `${slug}.md`);
   const fileContent = await readFile(filePath, "utf-8");
 
-  const { data, content } = matter(fileContent);
+  let data: Record<string, unknown> = {};
+  let content = "";
+  try {
+    const parsed = matter(fileContent);
+    data = parsed.data;
+    content = parsed.content;
+  } catch {
+    // fall through with defaults
+  }
 
   return {
     slug,
-    title: data.title ?? "Untitled",
-    description: data.description ?? "",
-    date: data.date ?? new Date().toISOString(),
-    author: data.author ?? "Harish Kumar",
-    tags: data.tags ?? [],
+    title: typeof data.title === "string" ? data.title : "Untitled",
+    description: typeof data.description === "string" ? data.description : "",
+    date: typeof data.date === "string" ? data.date : new Date().toISOString(),
+    author: typeof data.author === "string" ? data.author : "Harish Kumar",
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
     content,
-    image: data.image
+    image: typeof data.image === "string" ? data.image : undefined
   };
 }

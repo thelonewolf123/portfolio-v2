@@ -64,22 +64,25 @@ export async function getDocPages(): Promise<DocPage[]> {
   const projects = await discoverDocProjects();
   const pages: DocPage[] = [];
   for (const project of projects) {
-    // Only crawl "docs" — blog posts are served via Next.js at /blog/
-    for (const sub of ["docs"]) {
-      const found: Array<{ relPath: string; mtime: Date }> = [];
-      await walkIndexHtml(project.buildDir, sub, found);
-      for (const { relPath, mtime } of found) {
-        const topSegment = relPath.split(path.sep)[0];
-        if (COMMON_EXCLUDE.has(relPath) || COMMON_EXCLUDE.has(topSegment)) {
-          continue;
+    try {
+      for (const sub of ["docs"]) {
+        const found: Array<{ relPath: string; mtime: Date }> = [];
+        await walkIndexHtml(project.buildDir, sub, found);
+        for (const { relPath, mtime } of found) {
+          const topSegment = relPath.split(path.sep)[0];
+          if (COMMON_EXCLUDE.has(relPath) || COMMON_EXCLUDE.has(topSegment)) {
+            continue;
+          }
+          pages.push({
+            url: `${project.baseUrl}/${relPath}/`,
+            lastModified: mtime,
+            changeFrequency: "monthly",
+            priority: 0.5
+          });
         }
-        pages.push({
-          url: `${project.baseUrl}/${relPath}/`,
-          lastModified: mtime,
-          changeFrequency: "monthly",
-          priority: 0.5
-        });
       }
+    } catch (e) {
+      console.error(`getDocPages: failed to crawl ${project.baseUrl}`, e);
     }
   }
   return pages;
