@@ -14,17 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Harish Kumar - Full Stack Engineer",
+  title: "Harish Kumar - Full Stack & AI Engineer",
   description:
-    "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
+    "AI Engineer building production-grade AI agent systems — Aegis (AI debugging), Mail Pilot (AI-native email), and Quartermaster (conversational AI). 5+ years building scalable systems. Speaker at Chennai Web Conf on 'Artemis: Personal AI OS'.",
   metadataBase: new URL("https://harishkumar.info"),
   alternates: {
     canonical: "/"
   },
   openGraph: {
-    title: "Harish Kumar - Full Stack Engineer",
+    title: "Harish Kumar - Full Stack & AI Engineer",
     description:
-      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
+      "AI Engineer building production-grade AI agent systems — Aegis (AI debugging), Mail Pilot (AI-native email), and Quartermaster (conversational AI). 5+ years building scalable systems. Speaker at Chennai Web Conf on 'Artemis: Personal AI OS'.",
     url: "https://harishkumar.info",
     siteName: "Harish Kumar",
     locale: "en_US",
@@ -34,15 +34,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Harish Kumar - Full Stack Engineer"
+        alt: "Harish Kumar - Full Stack & AI Engineer"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harish Kumar - Full Stack Engineer",
+    title: "Harish Kumar - Full Stack & AI Engineer",
     description:
-      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis (AI debugging) and Stardust (container platform) — production-grade systems with full technical documentation.",
+      "AI Engineer building production-grade AI agent systems — Aegis (AI debugging), Mail Pilot (AI-native email), and Quartermaster (conversational AI). 5+ years building scalable systems. Speaker at Chennai Web Conf on 'Artemis: Personal AI OS'.",
     images: ["/og-image.png"]
   },
   robots: { index: true, follow: true },

@@ -13,7 +13,8 @@
                     "Revamped hotel search & booking flow, resulting in 150% increase in bookings",
                     "Built cancellation & reschedule policy module",
                     "Developed Reports module for operational insights",
-                    "Automated GST invoice retrieval from Indigo flights (100–400 daily bookings)"
+                    "Automated GST invoice retrieval from Indigo flights (100–400 daily bookings)",
+                    "Built production AI agent systems (Aegis, Mail Pilot, Quartermaster) alongside mobile development — LangGraph, LLM orchestration, and human-in-the-loop architectures"
                 ]
             },
             {
@@ -101,6 +102,19 @@
                     "MongoDB",
                     "Redis",
                     "MySQL"
+                ]
+            },
+            {
+                "name": "AI & ML",
+                "skills": [
+                    "LLM Agents",
+                    "LangGraph",
+                    "RAG",
+                    "Prompt Engineering",
+                    "CopilotKit",
+                    "OpenRouter",
+                    "Vector Databases",
+                    "n8n"
                 ]
             },
             {
@@ -194,6 +208,56 @@
                     }
                 ],
                 "imageUrl": "/mail-pilot.webp"
+            },
+            {
+                "title": "Quartermaster",
+                "tagline": "Conversational kirana-store agent",
+                "date": "July 2026 – Present",
+                "description": "A conversational AI agent that lets a kirana store owner run their entire business through Telegram in plain language. Billing, inventory, khata, GST invoices, analytics, and reminders — all through chat, no web app needed.",
+                "features": [
+                    "Multi-turn draft billing with GST computation",
+                    "Inventory management with automatic HSN/GST lookup",
+                    "Customer credit ledger (khata) with auto-reminders",
+                    "GST-compliant PDF invoices with CGST/SGST breakout",
+                    "Sales analytics and velocity-based reorder suggestions",
+                    "Scheduled reminders for weekly reports and stock checks"
+                ],
+                "techStack": [
+                    "Python",
+                    "LangGraph/deepagents",
+                    "OpenRouter",
+                    "SQLite",
+                    "SQLModel",
+                    "python-telegram-bot",
+                    "Jinja2/xelatex",
+                    "python-pptx"
+                ],
+                "stats": "21 doc pages • 26 tools • 8 modules • Live Telegram bot",
+                "liveUrl": "https://t.me/artemis_py_bot",
+                "docsUrl": "/docs/quartermaster/",
+                "docSections": [
+                    {
+                        "label": "Architecture",
+                        "href": "/docs/quartermaster/docs/architecture/system-overview"
+                    },
+                    {
+                        "label": "Modules",
+                        "href": "/docs/quartermaster/docs/modules/billing"
+                    },
+                    {
+                        "label": "Core Patterns",
+                        "href": "/docs/quartermaster/docs/core-patterns/middleware-pipeline"
+                    },
+                    {
+                        "label": "Infrastructure",
+                        "href": "/docs/quartermaster/docs/infrastructure/data-model"
+                    },
+                    {
+                        "label": "Deployment",
+                        "href": "/docs/quartermaster/docs/infrastructure/deployment"
+                    }
+                ],
+                "imageUrl": "/quartermaster.webp"
             },
             {
                 "title": "Aegis",
@@ -343,7 +407,7 @@
     },
     "blog": {
         "title": "Blog",
-        "description": "I write about full-stack engineering, real-time systems, observability, and building AI-powered tools.",
+        "description": "I write about building AI-powered tools, real-time systems, observability, and full-stack engineering.",
         "buttonText": "Read All Articles",
         "buttonUrl": "/blog",
         "featuredPosts": [

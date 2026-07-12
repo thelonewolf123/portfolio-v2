@@ -1,24 +1,24 @@
 import Link from "next/link";
 import { Navigation } from "@/components/internal/navigation";
 import { Footer } from "@/components/internal/footer";
-import { BookOpen, ArrowRight, FileText, Layers, MessageSquare } from "lucide-react";
+import { BookOpen, ArrowRight, FileText, Layers, MessageSquare, Store } from "lucide-react";
 
 export const metadata = {
   title: "Documentation - Harish Kumar",
-  description:
-    "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details.",
+    description:
+      "Technical documentation for Mail Pilot, Aegis, Stardust, and Quartermaster — architecture, design patterns, and system details.",
   alternates: { canonical: "/docs/" },
   openGraph: {
     title: "Documentation - Harish Kumar",
     description:
-      "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details.",
+      "Technical documentation for Mail Pilot, Aegis, Stardust, and Quartermaster — architecture, design patterns, and system details.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Project Documentation" }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Documentation - Harish Kumar",
     description:
-      "Technical documentation for Mail Pilot, Aegis, and Stardust — architecture, design patterns, and system details."
+      "Technical documentation for Mail Pilot, Aegis, Stardust, and Quartermaster — architecture, design patterns, and system details."
   }
 };
 
@@ -52,6 +52,16 @@ const docProjects = [
     docCount: "27 documents across 9 categories",
     features: ["Architecture Overview", "Infrastructure as Code", "Microservices", "Real-time Systems"],
     icon: Layers,
+  },
+  {
+    title: "Quartermaster",
+    tagline: "Conversational kirana-store agent",
+    description:
+      "Technical architecture documentation for Quartermaster — an AI agent that runs a kirana store through Telegram. Covers billing, inventory, khata, GST invoices, analytics, reminders, and the full middleware pipeline.",
+    href: "/docs/quartermaster/",
+    docCount: "21 documents across 5 categories",
+    features: ["System Architecture", "Modules", "Core Patterns", "Infrastructure"],
+    icon: Store,
   },
 ];
 

@@ -30,7 +30,7 @@ export function HeroSection() {
               Open to Work
             </div>
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
-              Built three production-grade systems with full technical
+              Built four production-grade systems with full technical
               documentation:{" "}
               <a
                 href="/docs/mail-pilot/"
@@ -39,6 +39,13 @@ export function HeroSection() {
                 Mail Pilot
               </a>{" "}
               (AI-native email client),{" "}
+              <a
+                href="/docs/quartermaster/"
+                className="underline decoration-amber-500/50 hover:decoration-amber-500 transition-all"
+              >
+                Quartermaster
+              </a>{" "}
+              (conversational AI agent),{" "}
               <a
                 href="/docs/aegis/"
                 rel="noopener noreferrer"
@@ -67,12 +74,19 @@ export function HeroSection() {
               Mail Pilot Docs
             </a>
             <a
-              href="/docs/aegis/"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-              Aegis Docs
-            </a>
+                href="/docs/quartermaster/"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 text-xs font-medium border border-amber-500/20 hover:bg-amber-500/20 transition-colors"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                Quartermaster Docs
+              </a>
+              <a
+                href="/docs/aegis/"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                Aegis Docs
+              </a>
             <a
               href="/docs/stardust/"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20 hover:bg-purple-500/20 transition-colors"

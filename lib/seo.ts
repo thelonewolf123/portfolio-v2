@@ -3,10 +3,10 @@ export function personJsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Harish Kumar",
-    jobTitle: "Full Stack Engineer",
+    jobTitle: "Full Stack & AI Engineer",
     url: "https://harishkumar.info",
     description:
-      "Full Stack Engineer with 5+ years of experience. Built WatchWithMe to 7,000+ users. Building Aegis and Stardust.",
+      "AI Engineer building production-grade AI agent systems — Aegis (AI debugging), Mail Pilot (AI-native email), and Quartermaster (conversational AI).",
     sameAs: [
       "https://github.com/thelonewolf123",
       "https://linkedin.com/in/harishkumark025"
@@ -18,6 +18,13 @@ export function personJsonLd() {
       "React Native",
       "TypeScript",
       "Node.js",
+      "Python",
+      "LLM Agents",
+      "LangGraph",
+      "RAG",
+      "Prompt Engineering",
+      "CopilotKit",
+      "OpenRouter",
       "Distributed Systems",
       "Real-time Systems",
       "Observability",

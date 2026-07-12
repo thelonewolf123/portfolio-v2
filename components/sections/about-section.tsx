@@ -12,7 +12,7 @@ export function AboutSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           {[
             { value: "7,000+", label: "Users Scaled" },
-            { value: "150%", label: "Booking Growth" },
+            { value: "4", label: "Production AI Systems" },
             { value: "5s", label: "Latency (was 15min)" },
             { value: "55%", label: "Cost Reduction" }
           ].map((stat) => (
@@ -32,8 +32,32 @@ export function AboutSection() {
 
         <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
           <p>
-            Full-stack engineer with 5+ years of experience building scalable
-            web and mobile applications. I built and scaled{" "}
+            AI engineer with 5+ years of experience building production-grade
+            web, mobile, and AI agent systems. I built{" "}
+            <Link
+              href="/docs/mail-pilot/"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Mail Pilot
+            </Link>
+            , an AI-native email client with CopilotKit and tool-based AI
+            architecture;{" "}
+            <Link
+              href="/docs/quartermaster/"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Quartermaster
+            </Link>
+            , a conversational AI agent with 26 tools built on
+            LangGraph/deepagents; and{" "}
+            <Link
+              href="/docs/aegis/"
+              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Aegis
+            </Link>
+            , an AI debugging system that translates natural language to SQL
+            and CloudWatch queries. Also scaled{" "}
             <Link
               href="https://www.watchwithme.in"
               target="_blank"
@@ -42,29 +66,13 @@ export function AboutSection() {
             >
               WatchWithMe
             </Link>{" "}
-            — a real-time watch party platform — from zero to 7,000+ users with
-            paying customers. Currently building{" "}
-            <Link
-              href="/docs/aegis/"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              Aegis
-            </Link>
-            , an AI system for querying and debugging production systems via
-            natural language, and{" "}
-            <Link
-              href="/docs/stardust/"
-              className="text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              Stardust
-            </Link>
-            , a container deployment platform on AWS Spot Instances with full
-            technical documentation.
+            to 7,000+ users. Each system ships with full technical
+            documentation.
           </p>
 
           <p>
-            I care about measurable outcomes. At{" "}
+            I care about measurable outcomes — the same engineering discipline
+            goes into my AI agent systems. At{" "}
             <Link
               href="https://www.pickyourtrail.com"
               target="_blank"
@@ -98,11 +106,11 @@ export function AboutSection() {
           </p>
 
           <p>
-            My core strengths are real-time systems, observability, and
-            distributed architecture. I was an invited speaker at Chennai Web
-            Conf (Dec 2025) where I presented on{" "}
+            My core strengths are AI agent architecture, LLM orchestration,
+            real-time systems, and observability. I was an invited speaker at
+            Chennai Web Conf (Dec 2025) where I presented{" "}
             <span className="text-foreground">"Artemis: Personal AI OS"</span>,
-            focusing on AI-native applications and personal AI systems.
+            covering AI-native applications and personal AI system design.
           </p>
         </div>
       </div>
