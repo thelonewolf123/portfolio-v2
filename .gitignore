@@ -41,3 +41,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# latex build artifacts
+resume-latex/*.aux
+resume-latex/*.log
+resume-latex/*.out
+resume-latex/*.pdf

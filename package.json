@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build:docs": "node scripts/build-docs.mjs",
+    "build:resume": "cd resume-latex && pdflatex -interaction=nonstopmode -halt-on-error index.tex && cp index.pdf ../public/Harish_resume.pdf",
     "build": "npm run build:docs && next build",
     "start": "next start",
     "lint": "eslint ."
