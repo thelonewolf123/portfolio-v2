@@ -13,6 +13,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono"
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#080808"
+};
+
 export const metadata: Metadata = {
   title: "Harish Kumar - Full Stack & AI Engineer",
   description:

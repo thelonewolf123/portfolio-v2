@@ -3,6 +3,8 @@ import { BlogCard } from "@/components/internal/blog-card";
 import { Navigation } from "@/components/internal/navigation";
 import { Footer } from "@/components/internal/footer";
 
+export const revalidate = 3600;
+
 export const metadata = {
   title: "Blog - Harish Kumar",
   description:

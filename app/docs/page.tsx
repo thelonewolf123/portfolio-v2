@@ -3,6 +3,8 @@ import { Navigation } from "@/components/internal/navigation";
 import { Footer } from "@/components/internal/footer";
 import { BookOpen, ArrowRight, FileText, Layers, MessageSquare, Store } from "lucide-react";
 
+export const revalidate = 3600;
+
 export const metadata = {
   title: "Documentation - Harish Kumar",
     description:

@@ -101,7 +101,7 @@ export function HeroSection() {
             <a
               href="mailto:harishkumar.vellore@gmail.com"
               className="w-11 h-11 flex items-center justify-center rounded-full border border-border hover:border-foreground/50 hover:bg-accent/10 text-muted-foreground hover:text-foreground transition-all duration-300"
-              title="Email"
+              aria-label="Email Harish Kumar"
             >
               <MailIcon className="w-5 h-5" />
             </a>
@@ -110,7 +110,7 @@ export function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-11 h-11 flex items-center justify-center rounded-full border border-border hover:border-foreground/50 hover:bg-accent/10 text-muted-foreground hover:text-foreground transition-all duration-300"
-              title="LinkedIn"
+              aria-label="LinkedIn profile"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -119,7 +119,7 @@ export function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-11 h-11 flex items-center justify-center rounded-full border border-border hover:border-foreground/50 hover:bg-accent/10 text-muted-foreground hover:text-foreground transition-all duration-300"
-              title="GitHub"
+              aria-label="GitHub profile"
             >
               <GithubIcon className="w-5 h-5" />
             </a>

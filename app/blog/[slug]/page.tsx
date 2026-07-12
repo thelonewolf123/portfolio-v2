@@ -5,12 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReactMarkdown } from "@/components/internal/markdown-renderer";
+import { blogPostJsonLd } from "@/lib/seo";
 
 interface BlogPostPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
+
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts();
@@ -131,6 +134,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </article>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            blogPostJsonLd({
+              title: post.title,
+              description: post.description,
+              date: post.date,
+              author: post.author,
+              slug: post.slug,
+              image: post.image
+            })
+          )
+        }}
+      />
     </div>
   );
 }

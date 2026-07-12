@@ -4,17 +4,21 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://harishkumar.info";
 
+function withSlash(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/docs`, changeFrequency: "monthly", priority: 0.7 },
+    { url: withSlash(`${SITE_URL}/blog`), changeFrequency: "weekly", priority: 0.8 },
+    { url: withSlash(`${SITE_URL}/docs`), changeFrequency: "monthly", priority: 0.7 },
   ];
 
   try {
     for (const post of await getAllBlogPosts()) {
       entries.push({
-        url: `${SITE_URL}/blog/${post.slug}`,
+        url: withSlash(`${SITE_URL}/blog/${post.slug}`),
         lastModified: new Date(post.date),
         changeFrequency: "monthly",
         priority: 0.6,

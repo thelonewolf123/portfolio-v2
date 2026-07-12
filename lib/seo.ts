@@ -1,3 +1,34 @@
+export function blogPostJsonLd(post: {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  slug: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author,
+      url: "https://harishkumar.info"
+    },
+    url: `https://harishkumar.info/blog/${post.slug}/`,
+    image: post.image
+      ? `https://harishkumar.info${post.image}`
+      : "https://harishkumar.info/og-image.png",
+    publisher: {
+      "@type": "Person",
+      name: "Harish Kumar",
+      url: "https://harishkumar.info"
+    }
+  };
+}
+
 export function personJsonLd() {
   return {
     "@context": "https://schema.org",
