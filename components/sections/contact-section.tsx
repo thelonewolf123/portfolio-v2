@@ -1,6 +1,8 @@
 import { ExternalLink, FileDown, GithubIcon, Linkedin, MailIcon } from "lucide-react";
 import Link from "next/link";
 
+import { OPEN_TO_WORK } from "@/data/constants";
+
 interface ContactData {
   title: string;
   description: string;
@@ -36,10 +38,12 @@ export function ContactSection() {
       <div className="max-w-2xl w-full">
         <div className="flex items-center gap-3 mb-8">
           <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Open to opportunities
-          </span>
+          {OPEN_TO_WORK && (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              Open to opportunities
+            </span>
+          )}
         </div>
         <p className="text-lg text-muted-foreground mb-10">
           I'm always interested in hearing about interesting projects and

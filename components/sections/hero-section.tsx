@@ -2,6 +2,7 @@ import { FileDown, GithubIcon, Linkedin, MailIcon } from "lucide-react";
 import Image from "next/image";
 
 import { GetInTouchCTA } from "@/components/internal/get-in-touch-cta";
+import { OPEN_TO_WORK } from "@/data/constants";
 
 export function HeroSection() {
   return (
@@ -25,10 +26,12 @@ export function HeroSection() {
             <p className="text-xl md:text-2xl font-semibold text-foreground/90">
               Full Stack & AI Engineer
             </p>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 border border-green-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              Open to Work
-            </div>
+            {OPEN_TO_WORK && (
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 border border-green-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                Open to Work
+              </div>
+            )}
             <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
               Built four production-grade systems with full technical
               documentation:{" "}
