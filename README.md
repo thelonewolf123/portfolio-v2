@@ -1,6 +1,6 @@
 # harishkumar.info
 
-A modern, responsive personal portfolio built with Next.js 16 and React 19, featuring a split-pane layout, a blog with syntax-highlighted Markdown, and four Docusaurus-powered documentation sites for production-grade AI projects.
+A modern, responsive personal portfolio built with Next.js 16 and React 19, featuring a split-pane layout, a blog with syntax-highlighted Markdown, and four Docusaurus-powered documentation sites for production-grade AI projects
 
 ## Features
 
